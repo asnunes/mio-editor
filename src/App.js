@@ -6,13 +6,7 @@ import './App.css';
 
 const App = () => {
   const editor = useMemo(() => withReact(createEditor()), []);
-  const [value, setValue] = useState(
-    JSON.parse(localStorage.getItem('content')) || [
-    {
-      type: 'paragraph',
-      children: [{ text: 'A line of a paragraph...'}],
-    },
-  ]);
+  const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
 
   const onValueChange = value => {
     setValue(value);
@@ -31,6 +25,13 @@ const App = () => {
     </Slate>
   );
 };
+
+const initialValue = [
+  {
+    type: 'paragraph',
+    children: [{ text: 'A line of a paragraph...'}],
+  },
+]
 
 export default App;
 
