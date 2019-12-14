@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mio-editor/static/css/main.d1b05096.chunk.css",
+    "main.js": "/mio-editor/static/js/main.c2a38600.chunk.js",
+    "main.js.map": "/mio-editor/static/js/main.c2a38600.chunk.js.map",
+    "runtime-main.js": "/mio-editor/static/js/runtime-main.e2abb17a.js",
+    "runtime-main.js.map": "/mio-editor/static/js/runtime-main.e2abb17a.js.map",
+    "static/js/2.c33068ad.chunk.js": "/mio-editor/static/js/2.c33068ad.chunk.js",
+    "static/js/2.c33068ad.chunk.js.map": "/mio-editor/static/js/2.c33068ad.chunk.js.map",
+    "index.html": "/mio-editor/index.html",
+    "precache-manifest.3d57d848bba221da42c9d92357ff5bca.js": "/mio-editor/precache-manifest.3d57d848bba221da42c9d92357ff5bca.js",
+    "service-worker.js": "/mio-editor/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/mio-editor/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.c33068ad.chunk.js.LICENSE": "/mio-editor/static/js/2.c33068ad.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e2abb17a.js",
+    "static/js/2.c33068ad.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.c2a38600.chunk.js"
+  ]
+}
