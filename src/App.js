@@ -39,6 +39,29 @@ const App = () => {
                 { match: 'text', split: true },
               );
               break;
+            case 's':
+              event.preventDefault();
+              Editor.setNodes(
+                editor,
+                { strikethrough: true },
+                { match: 'text', split: true },
+              );
+              break;
+            case 'i':
+              event.preventDefault();
+              Editor.setNodes(
+                editor,
+                { italic: true },
+                { match: 'text', split: true },
+              );
+              break;
+            case 'u':
+              event.preventDefault();
+              Editor.setNodes(
+                editor,
+                { underline: true },
+                { match: 'text', split: true }
+              )
           };
         }}
       />
