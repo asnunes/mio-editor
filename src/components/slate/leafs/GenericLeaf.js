@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Leaf = props => (
+export const GenericLeaf = props => (
   <span
     {...props.attributes}
     style={getLeafStyle(props.leaf)}
@@ -21,5 +21,3 @@ const getTextDecoration = leaf => {
   if (leaf.strikethrough) decorations.push('line-through');
   return decorations.length === 0 ? 'normal' : decorations.join(' '); 
 };
-
-export default Leaf;

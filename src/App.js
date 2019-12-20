@@ -1,8 +1,8 @@
 import React, { useMemo, useState, useCallback } from 'react';
-import { createEditor, Editor } from 'slate';
+import { createEditor, Editor, Transforms } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
-import Leaf from './components/slate/Leaf';
+import { renderLeaf, renderElement } from './renders';
 
 import './App.css';
 
@@ -20,17 +20,24 @@ const App = () => {
     localStorage.setItem('content', content);
     console.log(content);
   }
-
-  const renderLeaf = useCallback(props => <Leaf {...props}/>, []);
   
   return (
     <Slate editor={editor} value={value} onChange={onValueChange}>
       <Editable 
-        renderLeaf={renderLeaf}
+        renderLeaf={useCallback(renderLeaf)}
+        renderElement={useCallback(renderElement)}
         onKeyDown={event => {
           if (!event.ctrlKey) return;
 
           switch (event.key) {
+            case 'c':
+              event.preventDefault();
+              Transforms.setNodes(
+                editor,
+                { type: 'code' },
+                { match: n => Editor.isBlock(editor, n) }
+              );
+              break;
             case 'b':
               event.preventDefault();
               Editor.setNodes(
@@ -62,6 +69,9 @@ const App = () => {
                 { underline: true },
                 { match: 'text', split: true }
               )
+              break;
+            default:
+              return;
           };
         }}
       />

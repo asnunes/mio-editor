@@ -1343,11 +1343,6 @@
   resolved "https://registry.yarnpkg.com/@types/debounce/-/debounce-1.2.0.tgz#9ee99259f41018c640b3929e1bb32c3dcecdb192"
   integrity sha512-bWG5wapaWgbss9E238T0R6bfo5Fh3OkeoSt245CM7JJwVwpw6MEBCbIxLq5z8KzsE3uJhzcIuQkyiZmzV3M/Dw==
 
-"@types/debug@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
-  integrity sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
-
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -1401,11 +1396,6 @@
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.3.tgz#bdfd69d61e464dcc81b25159c270d75a73c1a636"
   integrity sha512-Il2DtDVRGDcqjDtE+rF8iqg1CArehSK84HZJCT7AMITlyXRBpuPhqGLDQMowraqqu1coEaimg4ZOqggt6L6L+A==
-
-"@types/lodash@^4.14.149":
-  version "4.14.149"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
-  integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -9166,25 +9156,23 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-slate-react@^0.54.6:
-  version "0.54.6"
-  resolved "https://registry.yarnpkg.com/slate-react/-/slate-react-0.54.6.tgz#fa1c54c2fcb31183553e9db9f2f825cabf5fb4a4"
-  integrity sha512-LLm3hJA3gyuzYucxdSSa94vvbQ+axfeWiljxpM8fVebWB40Pq50tgjIcn+6nrSh0FiKif3xcwywhqtyt8SjWHQ==
+slate-react@^0.57.0:
+  version "0.57.0"
+  resolved "https://registry.yarnpkg.com/slate-react/-/slate-react-0.57.0.tgz#9b3173646c2808f063795db7677a1d66f3fea120"
+  integrity sha512-vgAL7Ia1Cj2qMi7KTuOfvRmLVIQ5uTaeJeYzR1IrSBApFRrbP7jAXfppTTTXFmZOIpKv9wPB3sMZoD5zNLoYXQ==
   dependencies:
     "@types/debounce" "^1.2.0"
-    "@types/debug" "^4.1.5"
     "@types/is-hotkey" "^0.1.1"
-    "@types/lodash" "^4.14.149"
     debounce "^1.2.0"
     direction "^1.0.3"
     is-hotkey "^0.1.6"
     is-plain-object "^3.0.0"
     scroll-into-view-if-needed "^2.2.20"
 
-slate@^0.54.6:
-  version "0.54.6"
-  resolved "https://registry.yarnpkg.com/slate/-/slate-0.54.6.tgz#1c655f3645c8be6ccda4a8658ed1568a4ffca75b"
-  integrity sha512-5nirCsNcLyMsXPUtUhXNR6ShpUIRUuIVeiwLj/Mz85KlQvYSWKJv5xEG0HdZD1+L6PbxPIKvdPcLNnE9cnYqmw==
+slate@^0.57.0:
+  version "0.57.0"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-0.57.0.tgz#45e9f700ab457aa6c1253efdc7e87136e7d54afa"
+  integrity sha512-c7t2A812qnHNzmAa7CsWorGIdYaRNfTwRD4ZZ8Fk7UVuIsuOx8XbCQGHJ5l3IjvcQYeZCugTbG7erKzzagKxew==
   dependencies:
     "@types/esrever" "^0.2.0"
     esrever "^0.2.0"
