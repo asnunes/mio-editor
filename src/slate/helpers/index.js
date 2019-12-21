@@ -1,9 +1,9 @@
 import { Editor, Transforms, Text } from "slate"
 
 export const MioEditor = {
-  isBoldMarkActive(editor) {
+  isMarkActive(editor, markType) {
     const [match] = Editor.nodes(editor, {
-      match: node => node.bold === true,
+      match: node => node[markType] === true,
       universal: true,
     });
 
@@ -17,11 +17,11 @@ export const MioEditor = {
     return !!match;
   },
 
-  toggleBoldMark(editor) {
-    const isActive = MioEditor.isBoldMarkActive(editor);
+  toggleMark(editor, markType) {
+    const isActive = MioEditor.isMarkActive(editor, markType);
     Transforms.setNodes(
       editor,
-      { bold: isActive ? null : true },
+      { [markType]: isActive ? null : true },
       { match: node => Text.isText(node), split: true}
       );
   },

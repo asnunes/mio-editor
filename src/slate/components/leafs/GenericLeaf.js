@@ -19,5 +19,5 @@ const getTextDecoration = leaf => {
   const decorations = [];
   if (leaf.underline) decorations.push('underline');
   if (leaf.strikethrough) decorations.push('line-through');
-  return decorations.length === 0 ? 'normal' : decorations.join(' '); 
+  return decorations.length === 0 ? 'none' : decorations.join(' '); 
 };

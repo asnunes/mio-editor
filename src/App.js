@@ -37,31 +37,19 @@ const App = () => {
               break;
             case 'b':
               event.preventDefault();
-              MioEditor.toggleBoldMark(editor);
+              MioEditor.toggleMark(editor, 'bold');
               break;
             case 's':
               event.preventDefault();
-              Editor.setNodes(
-                editor,
-                { strikethrough: true },
-                { match: n => Text.isText(n), split: true },
-              );
+              MioEditor.toggleMark(editor, 'strikethrough');
               break;
             case 'i':
               event.preventDefault();
-              Editor.setNodes(
-                editor,
-                { italic: true },
-                { match: n => Text.isText(n), split: true },
-              );
+              MioEditor.toggleMark(editor, 'italic');
               break;
             case 'u':
               event.preventDefault();
-              Editor.setNodes(
-                editor,
-                { underline: true },
-                { match: n => Text.isText(n), split: true }
-              )
+              MioEditor.toggleMark(editor, 'underline');
               break;
             default:
               return;
