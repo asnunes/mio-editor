@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeElement, DefaultElement } from '../components/slate/elements';
+import { CodeElement, DefaultElement } from '../components/elements';
 
 export const renderElement = props => {
   switch(props.element.type) {

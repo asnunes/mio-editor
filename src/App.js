@@ -1,8 +1,9 @@
 import React, { useMemo, useState, useCallback } from 'react';
-import { createEditor, Editor, Transforms } from 'slate';
+import { createEditor, Editor, Text } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
-import { renderLeaf, renderElement } from './renders';
+import { renderLeaf, renderElement } from './slate/renders';
+import { MioEditor } from './slate/helpers';
 
 import './App.css';
 
@@ -32,26 +33,18 @@ const App = () => {
           switch (event.key) {
             case 'c':
               event.preventDefault();
-              Transforms.setNodes(
-                editor,
-                { type: 'code' },
-                { match: n => Editor.isBlock(editor, n) }
-              );
+              MioEditor.toggleCodeBlock(editor);
               break;
             case 'b':
               event.preventDefault();
-              Editor.setNodes(
-                editor,
-                { bold: true },
-                { match: 'text', split: true },
-              );
+              MioEditor.toggleBoldMark(editor);
               break;
             case 's':
               event.preventDefault();
               Editor.setNodes(
                 editor,
                 { strikethrough: true },
-                { match: 'text', split: true },
+                { match: n => Text.isText(n), split: true },
               );
               break;
             case 'i':
@@ -59,7 +52,7 @@ const App = () => {
               Editor.setNodes(
                 editor,
                 { italic: true },
-                { match: 'text', split: true },
+                { match: n => Text.isText(n), split: true },
               );
               break;
             case 'u':
@@ -67,7 +60,7 @@ const App = () => {
               Editor.setNodes(
                 editor,
                 { underline: true },
-                { match: 'text', split: true }
+                { match: n => Text.isText(n), split: true }
               )
               break;
             default:
