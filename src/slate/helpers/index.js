@@ -9,6 +9,7 @@ export const MioHelpers = {
 
     return !!match;
   },
+
   isLineEmpty(editor) {
     const [match] = Editor.nodes(editor, {
       match: node => node.text === '',
@@ -17,10 +18,11 @@ export const MioHelpers = {
     return !!match;
   },
 
-  isCodeBlockActive(editor) {
-    const [match] = Editor.node(editor, {
-      match: node => node.type === 'code',
+  isBlockActive(editor, blockType) {
+    const [match] = Editor.nodes(editor, {
+      match: node => node.type === blockType,
     });
+    console.log(blockType);
     return !!match;
   },
 
@@ -33,13 +35,12 @@ export const MioHelpers = {
       );
   },
 
-  toggleCodeBlock(editor) {
-    const isActive = MioHelpers.isCodeBlockActive(editor);
+  toggleBlock(editor, blockType) {
+    const isActive = MioHelpers.isBlockActive(editor, blockType);
     console.log(isActive);
     Transforms.setNodes(
       editor,
-      { type: isActive ? null : 'code' },
-      { match: node => Editor.isBlock(editor, node) }
+      { type: isActive ? null : blockType },
       );
   }
 };

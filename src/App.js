@@ -32,6 +32,10 @@ const App = () => {
           if (!event.ctrlKey) return;
 
           switch (event.key) {
+            case 'h':
+              event.preventDefault();
+              MioHelpers.toggleBlock(editor, 'header');
+              break;
             case 'c':
               event.preventDefault();
               MioHelpers.toggleMark(editor, 'code'); 
