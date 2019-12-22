@@ -38,6 +38,12 @@ export const MioHelpers = {
       { type: isActive ? null : blockType },
       );
   },
+  insertImage(editor, base64) {
+    Transforms.setNodes(
+      editor,
+      { type: "image", base64 }
+    );
+  },
   onKeyDown(event, editor) {
     Object.keys(HOTKEYS).some(key => {
       if (isHotkey(key, event)) {

@@ -5,14 +5,14 @@ import { withHistory } from 'slate-history';
 
 import { renderLeaf, renderElement } from './slate/renders';
 import { MioHelpers } from './slate/helpers';
-import { withInline } from './slate/plugins';
+import { withInline, withImage } from './slate/plugins';
 
 import { ImageUploader } from './services';
 
 import './App.css';
 
 const App = () => {
-  const editor = useMemo(() => withInline(withHistory(withReact(createEditor()))), []);
+  const editor = useMemo(() => withImage(withInline(withHistory(withReact(createEditor())))), []);
   const imageInput = useRef(null);
   const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
 

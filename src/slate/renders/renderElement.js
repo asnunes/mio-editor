@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeElement, DefaultElement, HeaderElement } from '../components/elements';
+import { CodeElement, DefaultElement, HeaderElement, ImageElement } from '../components/elements';
 
 export const renderElement = props => {
   switch(props.element.type) {
@@ -7,6 +7,8 @@ export const renderElement = props => {
       return <HeaderElement {...props}/>;
     case 'code':
       return <CodeElement {...props}/>;
+    case 'image':
+      return <ImageElement {...props}/>;
     default:
       return <DefaultElement {...props}/>;
   }
