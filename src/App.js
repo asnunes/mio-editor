@@ -9,7 +9,7 @@ import { withInline, withImage } from './slate/plugins';
 
 import { ImageUploader } from './services';
 
-import './App.css';
+import './stylesheets/App.scss';
 
 const App = () => {
   const editor = useMemo(() => withImage(withInline(withHistory(withReact(createEditor())))), []);
@@ -46,13 +46,15 @@ const App = () => {
         ref={imageInput}
         onChange={uploadImage}
       />
-      <Editable 
-        renderLeaf={useCallback(renderLeaf)}
-        renderElement={useCallback(renderElement)}
-        onKeyDown={event => MioHelpers.onKeyDown(event, editor)}
-        autoFocus
-        spellCheck
-      />
+      <div className="mio-editor">
+        <Editable 
+          renderLeaf={useCallback(renderLeaf)}
+          renderElement={useCallback(renderElement)}
+          onKeyDown={event => MioHelpers.onKeyDown(event, editor)}
+          autoFocus
+          spellCheck
+        />
+      </div>
     </Slate>
   );
 };
