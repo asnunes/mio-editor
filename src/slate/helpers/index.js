@@ -36,7 +36,7 @@ export const MioHelpers = {
     Transforms.setNodes(
       editor,
       { type: isActive ? null : blockType },
-      );
+    );
   },
   insertImage(editor, base64) {
     Transforms.setNodes(
@@ -45,7 +45,10 @@ export const MioHelpers = {
     );
   },
   insertMathBlock(editor) {
-    console.log("me chamou");
+    const isActive = MioHelpers.isBlockActive(editor, 'math');
+    if (isActive) return;
+
+    Transforms.setNodes(editor, { type: 'math' } );
   },
   onKeyDown(event, editor) {
     Object.keys(HOTKEYS).some(key => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeElement, DefaultElement, HeaderElement, ImageElement } from '../components/elements';
+import { CodeElement, DefaultElement, HeaderElement, ImageElement, MathElement } from '../components/elements';
 
 export const renderElement = props => {
   switch(props.element.type) {
@@ -9,6 +9,8 @@ export const renderElement = props => {
       return <CodeElement {...props}/>;
     case 'image':
       return <ImageElement {...props}/>;
+    case 'math':
+      return <MathElement {...props}/>;
     default:
       return <DefaultElement {...props}/>;
   }
