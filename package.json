@@ -13,6 +13,7 @@
     "react-scripts": "3.3.0",
     "serialize-javascript": "^2.1.1",
     "slate": "^0.57.0",
+    "slate-history": "^0.57.1",
     "slate-react": "^0.57.0"
   },
   "scripts": {

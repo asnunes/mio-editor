@@ -1,4 +1,5 @@
-import { Editor, Transforms, Text } from "slate"
+import { Editor, Transforms, Text } from "slate";
+import isHotkey from 'is-hotkey';
 
 export const MioHelpers = {
   isMarkActive(editor, markType) {
@@ -9,7 +10,6 @@ export const MioHelpers = {
 
     return !!match;
   },
-
   isLineEmpty(editor) {
     const [match] = Editor.nodes(editor, {
       match: node => node.text === '',
@@ -17,15 +17,12 @@ export const MioHelpers = {
 
     return !!match;
   },
-
   isBlockActive(editor, blockType) {
     const [match] = Editor.nodes(editor, {
       match: node => node.type === blockType,
     });
-    console.log(blockType);
     return !!match;
   },
-
   toggleMark(editor, markType) {
     const isActive = MioHelpers.isMarkActive(editor, markType);
     Transforms.setNodes(
@@ -34,13 +31,41 @@ export const MioHelpers = {
       { match: node => Text.isText(node), split: true}
       );
   },
-
   toggleBlock(editor, blockType) {
     const isActive = MioHelpers.isBlockActive(editor, blockType);
-    console.log(isActive);
     Transforms.setNodes(
       editor,
       { type: isActive ? null : blockType },
       );
+  },
+  onKeyDown(event, editor) {
+    Object.keys(HOTKEYS).some(key => {
+      if (isHotkey(key, event)) {
+        HOTKEYS[key](event, editor);
+        return true;
+      }
+    });
   }
+};
+
+const HOTKEYS = {
+  "mod+h": (event, editor) => onBlockHotkeyDown(event, editor, "header"),
+  "mod+c": (event, editor) => onMarkHotkeyDown(event, editor, "code"),
+  "mod+b": (event, editor) => onMarkHotkeyDown(event, editor, "bold"),
+  "mod+s": (event, editor) => onMarkHotkeyDown(event, editor, "strikethrough"),
+  "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
+  "mod+u": (event, editor) => onMarkHotkeyDown(event, editor, "underline"),
+};
+
+const onBlockHotkeyDown = (event, editor, blockType) => {
+  preventDefaultForEventAndCall(event, MioHelpers.toggleBlock, editor, blockType);
+};
+
+const onMarkHotkeyDown = (event, editor, markType) => {
+  preventDefaultForEventAndCall(event, MioHelpers.toggleMark, editor, markType);
+};
+
+const preventDefaultForEventAndCall = (event, fn, ...args) => {
+  event.preventDefault();
+  fn(...args);
 };
