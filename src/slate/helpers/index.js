@@ -1,10 +1,17 @@
 import { Editor, Transforms, Text } from "slate"
 
-export const MioEditor = {
+export const MioHelpers = {
   isMarkActive(editor, markType) {
     const [match] = Editor.nodes(editor, {
       match: node => node[markType] === true,
       universal: true,
+    });
+
+    return !!match;
+  },
+  isLineEmpty(editor) {
+    const [match] = Editor.nodes(editor, {
+      match: node => node.text === '',
     });
 
     return !!match;
@@ -18,7 +25,7 @@ export const MioEditor = {
   },
 
   toggleMark(editor, markType) {
-    const isActive = MioEditor.isMarkActive(editor, markType);
+    const isActive = MioHelpers.isMarkActive(editor, markType);
     Transforms.setNodes(
       editor,
       { [markType]: isActive ? null : true },
@@ -27,7 +34,8 @@ export const MioEditor = {
   },
 
   toggleCodeBlock(editor) {
-    const isActive = MioEditor.isCodeBlockActive(editor);
+    const isActive = MioHelpers.isCodeBlockActive(editor);
+    console.log(isActive);
     Transforms.setNodes(
       editor,
       { type: isActive ? null : 'code' },

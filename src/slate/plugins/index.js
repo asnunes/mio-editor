@@ -1,0 +1,1 @@
+export { withInline } from './withInline';

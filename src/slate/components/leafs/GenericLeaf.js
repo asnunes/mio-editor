@@ -12,7 +12,9 @@ export const GenericLeaf = props => (
 const getLeafStyle = leaf => ({
   fontWeight: leaf.bold ? 'bold' : 'normal',
   fontStyle: leaf.italic ? 'italic' : 'normal',
+  fontFamily: leaf.code ? 'monospace' : 'normal',
   textDecoration: getTextDecoration(leaf),
+  ...getCodeDecoration(leaf)
 });
 
 const getTextDecoration = leaf => {
@@ -21,3 +23,11 @@ const getTextDecoration = leaf => {
   if (leaf.strikethrough) decorations.push('line-through');
   return decorations.length === 0 ? 'none' : decorations.join(' '); 
 };
+
+const getCodeDecoration = leaf => {
+  return leaf.code ? {
+    fontFamily: leaf.code ? 'monospace' : 'normal',
+    backgroundColor: '#eee',
+    padding: '3px',
+  } : {}
+}

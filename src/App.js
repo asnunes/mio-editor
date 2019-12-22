@@ -1,14 +1,15 @@
 import React, { useMemo, useState, useCallback } from 'react';
-import { createEditor, Editor, Text } from 'slate';
+import { createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 
 import { renderLeaf, renderElement } from './slate/renders';
-import { MioEditor } from './slate/helpers';
+import { MioHelpers } from './slate/helpers';
+import { withInline } from './slate/plugins';
 
 import './App.css';
 
 const App = () => {
-  const editor = useMemo(() => withReact(createEditor()), []);
+  const editor = useMemo(() => withInline(withReact(createEditor())), []);
   const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
 
   const onValueChange = value => {
@@ -33,23 +34,23 @@ const App = () => {
           switch (event.key) {
             case 'c':
               event.preventDefault();
-              MioEditor.toggleCodeBlock(editor);
+              MioHelpers.toggleMark(editor, 'code'); 
               break;
             case 'b':
               event.preventDefault();
-              MioEditor.toggleMark(editor, 'bold');
+              MioHelpers.toggleMark(editor, 'bold');
               break;
             case 's':
               event.preventDefault();
-              MioEditor.toggleMark(editor, 'strikethrough');
+              MioHelpers.toggleMark(editor, 'strikethrough');
               break;
             case 'i':
               event.preventDefault();
-              MioEditor.toggleMark(editor, 'italic');
+              MioHelpers.toggleMark(editor, 'italic');
               break;
             case 'u':
               event.preventDefault();
-              MioEditor.toggleMark(editor, 'underline');
+              MioHelpers.toggleMark(editor, 'underline');
               break;
             default:
               return;
