@@ -44,6 +44,9 @@ export const MioHelpers = {
       { type: "image", base64 }
     );
   },
+  insertMathBlock(editor) {
+    console.log("me chamou");
+  },
   onKeyDown(event, editor) {
     Object.keys(HOTKEYS).some(key => {
       if (isHotkey(key, event)) {
@@ -61,7 +64,12 @@ const HOTKEYS = {
   "mod+s": (event, editor) => onMarkHotkeyDown(event, editor, "strikethrough"),
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
   "mod+u": (event, editor) => onMarkHotkeyDown(event, editor, "underline"),
+  "mod+=": (event, editor) => onMathBlockKeyDown(event, editor),
 };
+
+const onMathBlockKeyDown = (event, editor) => {
+  preventDefaultForEventAndCall(event, MioHelpers.insertMathBlock, editor);
+}
 
 const onBlockHotkeyDown = (event, editor, blockType) => {
   preventDefaultForEventAndCall(event, MioHelpers.toggleBlock, editor, blockType);
