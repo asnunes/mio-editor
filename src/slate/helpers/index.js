@@ -67,7 +67,7 @@ const HOTKEYS = {
   "mod+s": (event, editor) => onMarkHotkeyDown(event, editor, "strikethrough"),
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
   "mod+u": (event, editor) => onMarkHotkeyDown(event, editor, "underline"),
-  "mod+=": (event, editor) => onMathBlockKeyDown(event, editor),
+  "mod+=": (event, editor) => onBlockHotkeyDown(event, editor, "math"),
 };
 
 const onMathBlockKeyDown = (event, editor) => {
