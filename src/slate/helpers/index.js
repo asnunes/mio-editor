@@ -68,10 +68,12 @@ const HOTKEYS = {
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
   "mod+u": (event, editor) => onMarkHotkeyDown(event, editor, "underline"),
   "mod+=": (event, editor) => onBlockHotkeyDown(event, editor, "math"),
+  "enter": (event, editor) => onReturnKeydown(editor)
 };
 
-const onMathBlockKeyDown = (event, editor) => {
-  preventDefaultForEventAndCall(event, MioHelpers.insertMathBlock, editor);
+const onReturnKeydown = editor => {
+  if (MioHelpers.isBlockActive(editor, "math"))
+    setTimeout(() => MioHelpers.toggleBlock(editor, 'paragraph'), 0);
 }
 
 const onBlockHotkeyDown = (event, editor, blockType) => {

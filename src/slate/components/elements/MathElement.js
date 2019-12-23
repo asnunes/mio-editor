@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useSlate } from 'slate-react';
 import MathJax from 'react-mathjax2';
+import isHotkey from 'is-hotkey';
+
+import { MioHelpers } from '../../helpers';
 
 export const MathElement = ({attributes, element, children}) => {
   const [mathString, setMathString] = useState("");
+  const editor = useSlate();
 
   useEffect(() => setMathString(element.children[0].text || ""));
 
