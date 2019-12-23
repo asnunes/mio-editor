@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useSlate } from 'slate-react';
+import { useSelected, useFocused } from 'slate-react';
 import MathJax from 'react-mathjax2';
-import isHotkey from 'is-hotkey';
-
-import { MioHelpers } from '../../helpers';
 
 export const MathElement = ({attributes, element, children}) => {
   const [mathString, setMathString] = useState("");
-  const editor = useSlate();
+
+  const selected = useSelected();
+  const focused = useFocused();
 
   useEffect(() => setMathString(element.children[0].text || ""));
 
   return (
-    <div>
-      <div style={mathViewStyle} contentEditable={false}>
+    <div {...attributes} style={{position: 'relative'}}>
+      <div style={getMathViewStyle(selected, focused)} contentEditable={false}>
         <MathView mathString={mathString}/>
       </div>
-      <div style={mathEditorStyle} {...attributes}>
+      <div style={getMathEditorStyle(selected, focused)}>
         {children}
       </div>
     </div>
@@ -43,18 +42,41 @@ const MATH_JAX_OPTIONS = {
   showMathMenu: false,
 };
 
-const mathViewStyle = {
-  boxShadow: '0 0 0 3px #B4D5FF',
-  inlineSize: 'fit-content',
-  margin: 'auto',
+const getMathViewStyle = (selected, focused) => {
+  const defaultStyle = {
+    inlineSize: 'fit-content',
+    margin: 'auto',
+    padding: '5px',
+    borderRadius: '10px',
+  };
+  
+  if (!selected || !focused) return defaultStyle;
+  return {
+    boxShadow: '0 0 0 2px #80deea',
+    ...defaultStyle
+  };
 };
 
-const mathEditorStyle = {
-  background: 'rgba(180, 213, 255, 0.5)',
-  fontSize: '0.8em',
-  padding: '3px',
-  display: 'flex',
-  inlineSize: 'fit-content',
-  margin: 'auto',
-  minWidth: '20px',
+const getMathEditorStyle = (selected, focused) => {
+  const defaultStyle = {
+    position: 'absolute',
+    left: '50%',
+    bottom: 0,
+    transform: 'translate(-50%, 120%)',
+    borderRadius: '10px',
+  };
+
+
+  if (!selected || !focused) return { 
+    opacity: 0,
+    ...defaultStyle, 
+  };
+
+  return {
+    background: '#80deea',
+    fontSize: '0.8em',
+    padding: '3px',
+    minWidth: '20px',
+    ...defaultStyle
+  };  
 };
