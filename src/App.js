@@ -2,6 +2,7 @@ import React, { useMemo, useState, useCallback, useRef } from 'react';
 import { createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 import { withHistory } from 'slate-history';
+import MathJax from 'react-mathjax2';
 
 import { renderLeaf, renderElement } from './slate/renders';
 import { MioHelpers } from './slate/helpers';
@@ -47,6 +48,10 @@ const App = () => {
         onChange={uploadImage}
       />
       <div className="mio-editor">
+      <MathJax.Context 
+        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"
+        options={MATH_JAX_OPTIONS}
+      >
         <Editable 
           renderLeaf={useCallback(renderLeaf)}
           renderElement={useCallback(renderElement)}
@@ -54,9 +59,15 @@ const App = () => {
           autoFocus
           spellCheck
         />
+      </MathJax.Context>
       </div>
     </Slate>
   );
+};
+
+const MATH_JAX_OPTIONS = {
+  jax: ['input/ascii', 'output/SVG'],
+  showMathMenu: false,
 };
 
 const initialValue = [

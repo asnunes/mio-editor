@@ -14,20 +14,10 @@ export const MathInlineElement = ({attributes, element, children}) => {
       style={_getStyle(selected, focused)}
       contentEditable={false}
     >
-      <MathJax.Context
-        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"
-        options={MATH_JAX_OPTIONS}
-      >
-        <MathJax.Node inline>{element.content}</MathJax.Node>
-      </MathJax.Context>
+      <MathJax.Node inline>{element.content}</MathJax.Node>
       {children}
     </span>
   );
-};
-
-const MATH_JAX_OPTIONS = {
-  jax: ['input/ascii', 'output/SVG'],
-  showMathMenu: false,
 };
 
 const _getStyle = (selected, focused) => ({
