@@ -1,6 +1,8 @@
 export const withInline = editor => {
+  const { isInline } = editor;
+
   editor.isInline = element => {
-    return ["code"].includes(element.type);
+    return ["code", "mathInline"].includes(element.type) ? true : isInline(element);
   }
 
   return editor;

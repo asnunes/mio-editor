@@ -28,7 +28,7 @@ export const MioHelpers = {
     Transforms.setNodes(
       editor,
       { [markType]: isActive ? null : true },
-      { match: node => Text.isText(node), split: true}
+      { match: node => Text.isText(node), split: true }
       );
   },
   toggleBlock(editor, blockType) {
@@ -43,12 +43,6 @@ export const MioHelpers = {
       editor,
       { type: "image", base64 }
     );
-  },
-  insertMathBlock(editor) {
-    const isActive = MioHelpers.isBlockActive(editor, 'math');
-    if (isActive) return;
-
-    Transforms.setNodes(editor, { type: 'math' } );
   },
   onKeyDown(event, editor) {
     Object.keys(HOTKEYS).some(key => {
@@ -68,10 +62,19 @@ const HOTKEYS = {
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
   "mod+u": (event, editor) => onMarkHotkeyDown(event, editor, "underline"),
   "mod+=": (event, editor) => onBlockHotkeyDown(event, editor, "math"),
-  "enter": (event, editor) => onReturnKeydown(editor)
+  "mod+e": (event, editor) => onMathInlineKeyDown(event, editor),
+  "enter": (event, editor) => onReturnKeyDown(editor),
 };
 
-const onReturnKeydown = editor => {
+const onMathInlineKeyDown = (event, editor) => {
+  event.preventDefault();
+  Transforms.insertNodes(
+    editor,
+    { type: "mathInline", children: [{ text: "😎"}] },
+  );
+}
+
+const onReturnKeyDown = editor => {
   if (MioHelpers.isBlockActive(editor, "math"))
     setTimeout(() => MioHelpers.toggleBlock(editor, 'paragraph'), 0);
 }
