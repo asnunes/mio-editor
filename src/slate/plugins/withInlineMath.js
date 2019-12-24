@@ -12,19 +12,16 @@ export const withInlineMath = editor => {
       const blockStart = Editor.start(editor, path);
       const blockRange = { anchor, focus: blockStart }; 
       const blockText = Editor.string(editor, blockRange);
-      
-      const [especialCharLastButOneIndex, especialCharLastIndex] = _findLastTwoIndexOf(blockText, '$');
+      const lastSpaceIndex = blockText.lastIndexOf(" ");
+      const textAfterLastSpace = lastSpaceIndex !== -1 ? blockText.slice(lastSpaceIndex) : blockText;
 
-      if (especialCharLastButOneIndex !== -1 && especialCharLastIndex !== -1 && especialCharLastButOneIndex !== especialCharLastIndex) {
+      const [especialCharLastButOneRelativeIndex, especialCharLastRelativeIndex] = _findLastTwoIndexOf(textAfterLastSpace, '$');
+
+      if (_isThereTextBetweenTwo$(especialCharLastButOneRelativeIndex, especialCharLastRelativeIndex)){
+        const especialCharLastButOneIndex = especialCharLastButOneRelativeIndex + lastSpaceIndex;
         const fromLastButOneCharToEndRange = { anchor, focus: { path, offset: especialCharLastButOneIndex - blockStart.offset } };
-        const content = Editor.string(editor, fromLastButOneCharToEndRange);
 
-        Transforms.select(editor, fromLastButOneCharToEndRange);
-        Transforms.delete(editor);
-        Transforms.insertNodes(
-          editor,
-          { type: 'mathInline', content: content.slice(1,-1), children: [{ text: "" }] }
-        );
+        _insertMathInlineAt(editor, fromLastButOneCharToEndRange);
       }
     }
 
@@ -65,6 +62,10 @@ const _isCurrentPointTheStartOfLocation = (editor, endPoint, path) => Editor.isS
 
 const _noSelection = selection => selection && Range.isCollapsed(selection);
 
+const _isThereTextBetweenTwo$ = (first$Index, second$charIndex) => {
+  return first$Index !== -1 && second$charIndex !== 1;
+}
+
 const _findLastTwoIndexOf = (string, char) => {
   const charLastIndex = string.lastIndexOf(char);
 
@@ -78,4 +79,15 @@ const _findLastTwoIndexOf = (string, char) => {
 const _getPreviousBlock = (editor, endPoint) => {
   const previousNode = Editor.previous(editor, { at: endPoint } );
   return previousNode && previousNode[0];
+};
+
+const _insertMathInlineAt = (editor, range) => {
+  const content = Editor.string(editor, range);
+
+  Transforms.select(editor, range);
+  Transforms.delete(editor);
+  Transforms.insertNodes(
+    editor,
+    { type: 'mathInline', content: content.slice(1,-1), children: [{ text: "" }] }
+  );
 };
