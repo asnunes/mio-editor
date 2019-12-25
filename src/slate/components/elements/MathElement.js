@@ -54,6 +54,7 @@ const getMathEditorStyle = (selected, focused) => {
     bottom: 0,
     transform: 'translate(-50%, 120%)',
     borderRadius: '10px',
+    zIndex: 100,
   };
 
 

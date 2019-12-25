@@ -72,7 +72,7 @@ const onMathInlineKeyDown = (event, editor) => {
   event.preventDefault();
   Transforms.insertNodes(
     editor,
-    { type: "mathInline", children: [{ text: "😎"}] },
+    { type: "mathInline", children: [{ text: ""}] },
   );
 }
 
