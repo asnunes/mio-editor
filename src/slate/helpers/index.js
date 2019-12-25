@@ -31,7 +31,7 @@ export const MioHelpers = {
       editor,
       { [markType]: isActive ? null : true },
       { match: node => Text.isText(node), split: true }
-      );
+    );
   },
   toggleBlock(editor, blockType) {
     const isActive = MioHelpers.isBlockActive(editor, blockType);

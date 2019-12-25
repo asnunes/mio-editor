@@ -69,6 +69,12 @@ const App = () => {
 
 const MATH_JAX_OPTIONS = {
   jax: ['input/ascii', 'output/SVG'],
+  SVG: {
+    linebreaks: {
+      automatic: true,
+      width: 'container',
+    },
+  },
   showMathMenu: false,
 };
 
