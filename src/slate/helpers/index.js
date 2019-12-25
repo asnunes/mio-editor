@@ -58,7 +58,7 @@ export const MioHelpers = {
 
 const HOTKEYS = {
   "mod+h": (event, editor) => onBlockHotkeyDown(event, editor, "header"),
-  "mod+c": (event, editor) => onMarkHotkeyDown(event, editor, "code"),
+  "mod+;": (event, editor) => onMarkHotkeyDown(event, editor, "code"),
   "mod+b": (event, editor) => onMarkHotkeyDown(event, editor, "bold"),
   "mod+s": (event, editor) => onMarkHotkeyDown(event, editor, "strikethrough"),
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),

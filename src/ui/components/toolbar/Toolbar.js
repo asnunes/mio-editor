@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToggleButton, ButtonsGroup } from '..';
-import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG, StrikeThroughSVG } from './icons';
+import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG, StrikeThroughSVG, CodeSVG } from './icons';
 
 export const Toolbar = props => {
   return (
@@ -20,18 +20,23 @@ export const Toolbar = props => {
         />
         <ToggleButton
           type="mark"
-          format="bold"
+          format="italic"
           SVG={ItalicSVG}
         />
         <ToggleButton
           type="mark"
-          format="bold"
+          format="underline"
           SVG={UnderlineSVG}
         />
         <ToggleButton
           type="mark"
-          format="bold"
+          format="strikethrough"
           SVG={StrikeThroughSVG}
+        />
+        <ToggleButton
+          type="mark"
+          format="code"
+          SVG={CodeSVG}
         />
       </ButtonsGroup>
     </div> 
