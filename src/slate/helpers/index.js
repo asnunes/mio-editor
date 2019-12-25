@@ -24,10 +24,12 @@ export const MioHelpers = {
     return !!match;
   },
   toggleMark(editor, markType) {
+    if (!MioHelpers.isBlockActive('paragraph')) return;
+
     const isActive = MioHelpers.isMarkActive(editor, markType);
     Transforms.setNodes(
       editor,
-      { [markType]: isActive ? 'paragraph' : true },
+      { [markType]: isActive ? null : true },
       { match: node => Text.isText(node), split: true }
       );
   },

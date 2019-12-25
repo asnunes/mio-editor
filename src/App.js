@@ -75,7 +75,7 @@ const initialValue = [
     type: 'paragraph',
     children: [{ text: 'A line of a paragraph...'}],
   },
-]
+];
 
 export default App;
 
