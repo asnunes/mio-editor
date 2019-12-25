@@ -4,6 +4,7 @@ import { Slate, Editable, withReact } from 'slate-react';
 import { withHistory } from 'slate-history';
 import MathJax from 'react-mathjax2';
 
+import { Toolbar } from './ui/components/';
 import { renderLeaf, renderElement } from './slate/renders';
 import { MioHelpers } from './slate/helpers';
 import { withInline, withImage, withInlineMath } from './slate/plugins';
@@ -40,6 +41,7 @@ const App = () => {
   
   return (
     <Slate editor={editor} value={value} onChange={onValueChange}>
+      <Toolbar/>
       <input
         id="file-upload"
         type="file"
