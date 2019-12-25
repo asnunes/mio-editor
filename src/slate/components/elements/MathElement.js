@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelected, useFocused } from 'slate-react';
+import { Transforms } from 'slate';
+import { ReactEditor, useSelected, useFocused, useSlate } from 'slate-react';
 import MathJax from 'react-mathjax2';
 
 export const MathElement = ({attributes, element, children}) => {
@@ -7,12 +8,20 @@ export const MathElement = ({attributes, element, children}) => {
 
   const selected = useSelected();
   const focused = useFocused();
+  const editor = useSlate();
 
   useEffect(() => setMathString(element.children[0].text || ""));
 
+  function onMathClick(e) {
+    ReactEditor.focus(editor);
+    Transforms.select(editor, getElementPath());
+  }
+
+  function getElementPath() { return ReactEditor.findPath(editor, element) }
+
   return (
     <div {...attributes} style={{position: 'relative'}}>
-      <div style={getMathViewStyle(selected, focused)} contentEditable={false}>
+      <div style={getMathViewStyle(selected, focused)} contentEditable={false} onClick={e => onMathClick(e)}>
         <MathView mathString={mathString}/>
       </div>
       <div style={getMathEditorStyle(selected, focused)}>
