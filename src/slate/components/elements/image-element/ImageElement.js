@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelected, useFocused } from 'slate-react';
+import { useSelected, useFocused, ReactEditor, useSlate } from 'slate-react';
+import { Transforms } from 'slate';
 import { ResizableBox } from 'react-resizable';
 
 import './style.css';
@@ -7,9 +8,10 @@ import './style.css';
 export const ImageElement = ({attributes, element, children}) => {
   const selected = useSelected();
   const focused = useFocused();
+  const editor = useSlate();
 
-  const [width, setWidth] = useState(200);
-  const [height, setHeight] = useState(200);
+  const [width, setWidth] = useState(element.width || 200);
+  const [height, setHeight] = useState(element.height || 200);
 
   const imgRef = useRef(null);
 
@@ -17,6 +19,19 @@ export const ImageElement = ({attributes, element, children}) => {
     setWidth(imgRef.current.width);
     setHeight(imgRef.current.height);
   }, []);
+
+  const onResizeStop = (e, data) => {
+    const path = ReactEditor.findPath(editor, element);
+    updateElementDimensions(path, data.size);
+  };
+
+  const updateElementDimensions = (path, size) => {
+    Transforms.setNodes(
+      editor,
+      { width: size.width, height: size.height },
+      { at: path },
+      )
+  };
   
   return (
     <div {...attributes}>
@@ -24,9 +39,10 @@ export const ImageElement = ({attributes, element, children}) => {
         <ResizableBox
           width={width}
           height={height}
+          onResizeStop={onResizeStop}
+          lockAspectRatio={true}
           minConstraints={[50, 50]}
           maxConstraints={[600, 400]}
-          lockAspectRatio={true}
         >
           <img
             ref={imgRef}
