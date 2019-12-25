@@ -1,13 +1,20 @@
 import React from 'react';
-import { useSlate } from 'slate-react';
+import { ReactEditor, useSlate } from 'slate-react';
 
 import { MioHelpers } from '../../slate/helpers';
 
 export const ToggleButton = ({ type, format, SVG }) => {
   const editor = useSlate();
   
+  function onButtonMouseDown(e) {
+    e.preventDefault();
+    _toggleBlockOrMark(editor, type, format);
+    ReactEditor.focus(editor);
+  }
+
   return (
     <div
+      onMouseDown={onButtonMouseDown}
       style={_getButtonStyle()}
     >
       <SVG style={_getIconStyle(editor, type, format)}/>
@@ -34,6 +41,21 @@ const _getStatusStyle = (editor, type, format) => {
 };
 
 const _isActive = (editor, type, format) => {
-  if (type === 'block') return MioHelpers.isBlockActive(editor, format);
-  return MioHelpers.isMarkActive(editor, format);
+  return _checkTypeAndReturnFunction(
+    type,
+    MioHelpers.isBlockActive,
+    MioHelpers.isMarkActive
+  )(editor, format);
+}
+
+const _toggleBlockOrMark = (editor, type, format) => {
+  return _checkTypeAndReturnFunction(
+    type,
+    MioHelpers.toggleBlock,
+    MioHelpers.toggleMark
+  )(editor, format);
+};
+
+const _checkTypeAndReturnFunction = (type, functionForBlock, functionForMark) => {
+  return type === 'block' ? functionForBlock : functionForMark;
 }
