@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mio-editor/static/css/main.d2aae932.chunk.css",
-    "main.js": "/mio-editor/static/js/main.cfdfb5a4.chunk.js",
-    "main.js.map": "/mio-editor/static/js/main.cfdfb5a4.chunk.js.map",
+    "main.js": "/mio-editor/static/js/main.c3507a6e.chunk.js",
+    "main.js.map": "/mio-editor/static/js/main.c3507a6e.chunk.js.map",
     "runtime-main.js": "/mio-editor/static/js/runtime-main.e2abb17a.js",
     "runtime-main.js.map": "/mio-editor/static/js/runtime-main.e2abb17a.js.map",
     "static/js/2.513371db.chunk.js": "/mio-editor/static/js/2.513371db.chunk.js",
     "static/js/2.513371db.chunk.js.map": "/mio-editor/static/js/2.513371db.chunk.js.map",
     "index.html": "/mio-editor/index.html",
-    "precache-manifest.7416fb6ac4917bdb00d8f20959164541.js": "/mio-editor/precache-manifest.7416fb6ac4917bdb00d8f20959164541.js",
+    "precache-manifest.b9a13c175939b9a5f2cff648fea575a5.js": "/mio-editor/precache-manifest.b9a13c175939b9a5f2cff648fea575a5.js",
     "service-worker.js": "/mio-editor/service-worker.js",
     "static/css/main.d2aae932.chunk.css.map": "/mio-editor/static/css/main.d2aae932.chunk.css.map",
     "static/js/2.513371db.chunk.js.LICENSE": "/mio-editor/static/js/2.513371db.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e2abb17a.js",
     "static/js/2.513371db.chunk.js",
     "static/css/main.d2aae932.chunk.css",
-    "static/js/main.cfdfb5a4.chunk.js"
+    "static/js/main.c3507a6e.chunk.js"
   ]
 }
