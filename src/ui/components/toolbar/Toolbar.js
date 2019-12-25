@@ -1,13 +1,16 @@
 import React from 'react';
-import { ToggleBlockButton } from '..';
+import { ToggleButton, ButtonsGroup } from '..';
 
-import { ReactComponent as ParagraphSVG } from './icons/paragraph-icon.svg';
+import { ReactComponent as TitleSVG } from './icons/title-icon.svg';
 
 export const Toolbar = props => {
   return (
-    <ToggleBlockButton
-      format="paragraph"
-      SVG={ParagraphSVG}
-    />
+    <ButtonsGroup>
+      <ToggleButton
+        type="block"
+        format="header"
+        SVG={TitleSVG}
+      />
+    </ButtonsGroup>
   );
 };

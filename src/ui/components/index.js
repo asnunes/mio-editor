@@ -1,2 +1,3 @@
 export { Toolbar } from './toolbar/';
-export { ToggleBlockButton } from './ToggleBlockButton';
+export { ToggleButton } from './ToggleButton';
+export { ButtonsGroup } from './buttons-group/';
