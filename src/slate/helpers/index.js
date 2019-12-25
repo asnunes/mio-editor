@@ -24,7 +24,7 @@ export const MioHelpers = {
     return !!match;
   },
   toggleMark(editor, markType) {
-    if (!MioHelpers.isBlockActive('paragraph')) return;
+    if (!MioHelpers.isBlockActive(editor, 'paragraph')) return;
 
     const isActive = MioHelpers.isMarkActive(editor, markType);
     Transforms.setNodes(

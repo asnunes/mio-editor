@@ -1,16 +1,43 @@
 import React from 'react';
 import { ToggleButton, ButtonsGroup } from '..';
-
-import { ReactComponent as TitleSVG } from './icons/title-icon.svg';
+import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG, StrikeThroughSVG } from './icons';
 
 export const Toolbar = props => {
   return (
-    <ButtonsGroup>
-      <ToggleButton
-        type="block"
-        format="header"
-        SVG={TitleSVG}
-      />
-    </ButtonsGroup>
+    <div style={_getStyle()}>
+      <ButtonsGroup>
+        <ToggleButton
+          type="block"
+          format="header"
+          SVG={TitleSVG}
+        />
+      </ButtonsGroup>
+      <ButtonsGroup>
+        <ToggleButton
+          type="mark"
+          format="bold"
+          SVG={BoldSVG}
+        />
+        <ToggleButton
+          type="mark"
+          format="bold"
+          SVG={ItalicSVG}
+        />
+        <ToggleButton
+          type="mark"
+          format="bold"
+          SVG={UnderlineSVG}
+        />
+        <ToggleButton
+          type="mark"
+          format="bold"
+          SVG={StrikeThroughSVG}
+        />
+      </ButtonsGroup>
+    </div> 
   );
 };
+
+const _getStyle = () => ({
+  display: 'flex',
+});
