@@ -12,8 +12,8 @@ export const withInlineMath = editor => {
       const blockStart = Editor.start(editor, path);
       const blockRange = { anchor, focus: blockStart }; 
       const blockText = Editor.string(editor, blockRange);
-      const lastSpaceIndex = blockText.lastIndexOf(" ");
-      const textAfterLastSpace = lastSpaceIndex !== -1 ? blockText.slice(lastSpaceIndex) : blockText;
+      const lastSpaceIndex = blockText.lastIndexOf(" ") === -1 ? 0 : blockText.lastIndexOf(" ");
+      const textAfterLastSpace = blockText.slice(lastSpaceIndex);
 
       const [especialCharLastButOneRelativeIndex, especialCharLastRelativeIndex] = _findLastTwoIndexOf(textAfterLastSpace, '$');
 
