@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ebe283edefdf400645a44156ddc0e472",
+    "revision": "8bc0325bf9ea5e4160a6c06a6621789e",
     "url": "/mio-editor/index.html"
   },
   {
-    "revision": "cba5baa24ad3f11f2352",
+    "revision": "31757531df26177f70c1",
     "url": "/mio-editor/static/css/main.d2aae932.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mio-editor/static/js/2.513371db.chunk.js.LICENSE"
   },
   {
-    "revision": "cba5baa24ad3f11f2352",
-    "url": "/mio-editor/static/js/main.2d2e6067.chunk.js"
+    "revision": "31757531df26177f70c1",
+    "url": "/mio-editor/static/js/main.cfdfb5a4.chunk.js"
   },
   {
     "revision": "911b3cf60d286a6929aa",
