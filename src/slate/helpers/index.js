@@ -77,6 +77,11 @@ const onMathInlineKeyDown = (event, editor) => {
 const onReturnKeyDown = editor => {
   if (MioHelpers.isBlockActive(editor, "math"))
     setTimeout(() => MioHelpers.toggleBlock(editor, 'paragraph'), 0);
+  if (MioHelpers.isBlockActive(editor, "image"))
+    Transforms.insertNodes(
+      editor,
+      { type: null, children: [{ text: ""}] },
+    );
 }
 
 const onBlockHotkeyDown = (event, editor, blockType) => {

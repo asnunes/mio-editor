@@ -24,20 +24,31 @@ export const ImageElement = ({attributes, element, children}) => {
 
   useEffect(setBestImageDimensions, []);
 
-  const onResizeStop = (e, data) => {
-    const path = ReactEditor.findPath(editor, element);
-    updateElementDimensions(path, data.size);
+  function onResize(e, data) {
+    setWidth(data.size.width);
+    setHeight(data.size.height);
+  }
+
+  function onResizeStart(e, data) {
+    ReactEditor.focus(editor);
+    Transforms.select(editor, getElementPath());
   };
 
-  const updateElementDimensions = (path, size) => {
+  function onResizeStop(e, data) {
+    updateElementDimensions(data.size);
+  };
+
+  function updateElementDimensions(size) {
     Transforms.setNodes(
       editor,
       { width: size.width, height: size.height },
-      { at: path },
-      )
+      { at: getElementPath() },
+      );
   };
+
+  function getElementPath() { return ReactEditor.findPath(editor, element) }
   
-  const setBestImageDimensions = () => {
+  function setBestImageDimensions() {
     const naturalWidth = imgRef.current.naturalWidth;
     const naturalHeight = imgRef.current.naturalHeight;
     const naturalTheta = Math.atan(naturalHeight/naturalWidth);
@@ -57,6 +68,8 @@ export const ImageElement = ({attributes, element, children}) => {
           className="box"
           width={width}
           height={height}
+          onResize={onResize}
+          onResizeStart={onResizeStart}
           onResizeStop={onResizeStop}
           lockAspectRatio={true}
           minConstraints={[minimumWidth, minimumHeight]}
