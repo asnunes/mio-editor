@@ -27,7 +27,7 @@ export const MioHelpers = {
     const isActive = MioHelpers.isMarkActive(editor, markType);
     Transforms.setNodes(
       editor,
-      { [markType]: isActive ? null : true },
+      { [markType]: isActive ? 'paragraph' : true },
       { match: node => Text.isText(node), split: true }
       );
   },
@@ -35,7 +35,7 @@ export const MioHelpers = {
     const isActive = MioHelpers.isBlockActive(editor, blockType);
     Transforms.setNodes(
       editor,
-      { type: isActive ? null : blockType },
+      { type: isActive ? 'paragraph' : blockType },
     );
   },
   insertImage(editor, base64) {
@@ -80,7 +80,7 @@ const onReturnKeyDown = editor => {
   if (MioHelpers.isBlockActive(editor, "image"))
     Transforms.insertNodes(
       editor,
-      { type: null, children: [{ text: ""}] },
+      { type: 'paragraph', children: [{ text: ""}] },
     );
 }
 
