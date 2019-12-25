@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mio-editor/precache-manifest.b9a13c175939b9a5f2cff648fea575a5.js"
+  "/mio-editor/precache-manifest.a4a8f5bf42863d0f5ceff26e05b1d5d4.js"
 );
 
 self.addEventListener('message', (event) => {
