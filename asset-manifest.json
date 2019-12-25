@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/mio-editor/static/css/main.e15ab8f2.chunk.css",
-    "main.js": "/mio-editor/static/js/main.b975838d.chunk.js",
-    "main.js.map": "/mio-editor/static/js/main.b975838d.chunk.js.map",
+    "main.css": "/mio-editor/static/css/main.d2aae932.chunk.css",
+    "main.js": "/mio-editor/static/js/main.2d2e6067.chunk.js",
+    "main.js.map": "/mio-editor/static/js/main.2d2e6067.chunk.js.map",
     "runtime-main.js": "/mio-editor/static/js/runtime-main.e2abb17a.js",
     "runtime-main.js.map": "/mio-editor/static/js/runtime-main.e2abb17a.js.map",
-    "static/js/2.8846a4ea.chunk.js": "/mio-editor/static/js/2.8846a4ea.chunk.js",
-    "static/js/2.8846a4ea.chunk.js.map": "/mio-editor/static/js/2.8846a4ea.chunk.js.map",
+    "static/js/2.513371db.chunk.js": "/mio-editor/static/js/2.513371db.chunk.js",
+    "static/js/2.513371db.chunk.js.map": "/mio-editor/static/js/2.513371db.chunk.js.map",
     "index.html": "/mio-editor/index.html",
-    "precache-manifest.9c60e73281b9b82e6cff0c4373c1fb61.js": "/mio-editor/precache-manifest.9c60e73281b9b82e6cff0c4373c1fb61.js",
+    "precache-manifest.a63ea552fd00a4820e6c7d8237e7ace0.js": "/mio-editor/precache-manifest.a63ea552fd00a4820e6c7d8237e7ace0.js",
     "service-worker.js": "/mio-editor/service-worker.js",
-    "static/css/main.e15ab8f2.chunk.css.map": "/mio-editor/static/css/main.e15ab8f2.chunk.css.map",
-    "static/js/2.8846a4ea.chunk.js.LICENSE": "/mio-editor/static/js/2.8846a4ea.chunk.js.LICENSE"
+    "static/css/main.d2aae932.chunk.css.map": "/mio-editor/static/css/main.d2aae932.chunk.css.map",
+    "static/js/2.513371db.chunk.js.LICENSE": "/mio-editor/static/js/2.513371db.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.e2abb17a.js",
-    "static/js/2.8846a4ea.chunk.js",
-    "static/css/main.e15ab8f2.chunk.css",
-    "static/js/main.b975838d.chunk.js"
+    "static/js/2.513371db.chunk.js",
+    "static/css/main.d2aae932.chunk.css",
+    "static/js/main.2d2e6067.chunk.js"
   ]
 }
