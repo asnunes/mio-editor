@@ -12,13 +12,17 @@ export const ImageElement = ({attributes, element, children}) => {
 
   const [width, setWidth] = useState(element.width || 200);
   const [height, setHeight] = useState(element.height || 200);
-
+  const [theta, setTheta] = useState(Math.PI / 4); // 45 degrees or aspect ratio = 1
+  
   const imgRef = useRef(null);
+  
+  const minimumWidth = 30 * Math.cos(theta);
+  const minimumHeight = 30 * Math.sin(theta);
 
-  useEffect(() => {
-    setWidth(imgRef.current.width);
-    setHeight(imgRef.current.height);
-  }, []);
+  const maximumWidth = 500 * Math.cos(theta);
+  const maximumHeight = 500 * Math.sin(theta);
+
+  useEffect(setBestImageDimensions, []);
 
   const onResizeStop = (e, data) => {
     const path = ReactEditor.findPath(editor, element);
@@ -33,16 +37,30 @@ export const ImageElement = ({attributes, element, children}) => {
       )
   };
   
+  const setBestImageDimensions = () => {
+    const naturalWidth = imgRef.current.naturalWidth;
+    const naturalHeight = imgRef.current.naturalHeight;
+    const naturalTheta = Math.atan(naturalHeight/naturalWidth);
+
+    const desirableWidth = 355 * Math.cos(naturalTheta);
+    const desirableHeight = 355 * Math.sin(naturalTheta);
+
+    setWidth(Math.min(naturalWidth, desirableWidth));
+    setHeight(Math.min(naturalHeight, desirableHeight));
+    setTheta(naturalTheta);
+  };
+  
   return (
     <div {...attributes}>
       <div contentEditable={false}>
         <ResizableBox
+          className="box"
           width={width}
           height={height}
           onResizeStop={onResizeStop}
           lockAspectRatio={true}
-          minConstraints={[50, 50]}
-          maxConstraints={[600, 400]}
+          minConstraints={[minimumWidth, minimumHeight]}
+          maxConstraints={[maximumWidth, maximumHeight]}
         >
           <img
             ref={imgRef}
