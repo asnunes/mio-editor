@@ -15,7 +15,6 @@ import './stylesheets/App.scss';
 
 const App = () => {
   const editor = useMemo(() => withInlineMath(withImage(withInline(withHistory(withReact(createEditor()))))), []);
-  const imageInput = useRef(null);
   const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
 
   const onValueChange = value => {
@@ -28,27 +27,10 @@ const App = () => {
     localStorage.setItem('content', content);
     console.log(content);
   }
-
-  const uploadImage = event => {
-    if (event.target.files.length === 0) return; 
-    
-    const file = event.target.files[0];
-    ImageUploader.getBase64FromFile(file).then(
-      base64 => MioHelpers.insertImage(editor, base64),
-      error => console.log(error)
-    );
-  };
   
   return (
     <Slate editor={editor} value={value} onChange={onValueChange}>
       <Toolbar/>
-      <input
-        id="file-upload"
-        type="file"
-        accept="image/png, image/jpeg"
-        ref={imageInput}
-        onChange={uploadImage}
-      />
       <div className="mio-editor">
       <MathJax.Context 
         script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_SVG"

@@ -1,4 +1,4 @@
 export { Toolbar } from './toolbar/';
 export { ToggleButton } from './ToggleButton';
-export { GenericButton } from './GenericButton';
+export { ImageButton } from './ImageButton';
 export { ButtonsGroup } from './buttons-group/';
