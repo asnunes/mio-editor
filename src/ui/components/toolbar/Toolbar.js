@@ -1,6 +1,7 @@
 import React from 'react';
 import { ToggleButton, ButtonsGroup } from '..';
-import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG, StrikeThroughSVG, CodeSVG } from './icons';
+import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG,
+  StrikeThroughSVG, CodeSVG, ImageSVG, MathSVG } from './icons';
 
 export const Toolbar = props => {
   return (
@@ -39,10 +40,30 @@ export const Toolbar = props => {
           SVG={CodeSVG}
         />
       </ButtonsGroup>
+      <ButtonsGroup>
+        <ToggleButton
+          type="block"
+          format="image"
+          SVG={ImageSVG}
+        />
+        <ToggleButton
+          type="block"
+          format="math"
+          SVG={MathSVG}
+        />
+      </ButtonsGroup>
     </div> 
   );
 };
 
 const _getStyle = () => ({
   display: 'flex',
+  padding: '5px 0',
+  borderBottom: '1px solid rgb(218, 220, 224)',
+  zIndex: 110,
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  background: 'white'
 });
