@@ -36,6 +36,7 @@ export const MioHelpers = {
   toggleBlock(editor, blockType) {
     const isActive = MioHelpers.isBlockActive(editor, blockType);
     if (blockType === 'math' && !MioHelpers.isLineEmpty(editor)) return Editor.insertText(editor, "$");
+    
     Transforms.setNodes(
       editor,
       { type: isActive ? 'paragraph' : blockType },

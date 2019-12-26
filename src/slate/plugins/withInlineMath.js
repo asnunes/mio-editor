@@ -1,7 +1,7 @@
 import { Range, Editor, Transforms } from 'slate';
 
 export const withInlineMath = editor => {
-  const { insertText, deleteBackward } = editor;
+  const { insertText, deleteBackward, isInline, isVoid } = editor;
 
   editor.insertText = text => {
     const { selection } = editor;
@@ -21,7 +21,7 @@ export const withInlineMath = editor => {
         const especialCharLastButOneIndex = especialCharLastButOneRelativeIndex + lastSpaceIndex;
         const fromLastButOneCharToEndRange = { anchor, focus: { path, offset: especialCharLastButOneIndex - blockStart.offset } };
 
-        _insertMathInlineAt(editor, fromLastButOneCharToEndRange);
+        _insertInlineMathAt(editor, fromLastButOneCharToEndRange);
       }
     }
 
@@ -37,25 +37,33 @@ export const withInlineMath = editor => {
 
       const endPoint = Editor.end(editor, path);
 
-      if (_isThereAMathInlineBlockPrevious(editor, endPoint) &&
+      if (_isThereAInlineMathBlockPrevious(editor, endPoint) &&
         _isCurrentPointTheStartOfLocation(editor, endPoint, path)
       ) {
-        const mathInlineBlock = _getPreviousBlock(editor, endPoint);
-        const mathContent = mathInlineBlock.content;
+        const InlineMathBlock = _getPreviousBlock(editor, endPoint);
+        const mathContent = InlineMathBlock.content;
         deleteBackward(...args);
         editor.insertText('$' + mathContent);
       } else {
         deleteBackward(...args);
       }
     }
-  }
+  };
+
+  editor.isInline = element => {
+    return element.type === "inlineMath" ? true : isInline(element);
+  };
+
+  editor.isVoid = element => {
+    return element.type === 'inlineMath'? true : isVoid(element);
+  };
 
   return editor;
 };
 
-const _isThereAMathInlineBlockPrevious = (editor, endPoint) => {
+const _isThereAInlineMathBlockPrevious = (editor, endPoint) => {
   const previousBlock = _getPreviousBlock(editor, endPoint);
-  return previousBlock && previousBlock.type === "mathInline";
+  return previousBlock && previousBlock.type === "inlineMath";
 };
 
 const _isCurrentPointTheStartOfLocation = (editor, endPoint, path) => Editor.isStart(editor, endPoint, path);
@@ -81,13 +89,13 @@ const _getPreviousBlock = (editor, endPoint) => {
   return previousNode && previousNode[0];
 };
 
-const _insertMathInlineAt = (editor, range) => {
+const _insertInlineMathAt = (editor, range) => {
   const content = Editor.string(editor, range);
 
   Transforms.select(editor, range);
   Transforms.delete(editor);
   Transforms.insertNodes(
     editor,
-    { type: 'mathInline', content: content.slice(1,-1), children: [{ text: "" }] }
+    { type: 'inlineMath', content: content.slice(1,-1), children: [{ text: "" }] }
   );
 };

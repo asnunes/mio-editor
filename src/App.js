@@ -1,20 +1,18 @@
-import React, { useMemo, useState, useCallback, useRef } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { createEditor } from 'slate';
 import { Slate, Editable, withReact } from 'slate-react';
 import { withHistory } from 'slate-history';
 import MathJax from 'react-mathjax2';
 
-import { Toolbar } from './ui/components/';
+import { Toolbar } from './ui/components/toolbar';
 import { renderLeaf, renderElement } from './slate/renders';
 import { MioHelpers } from './slate/helpers';
-import { withInline, withImage, withInlineMath } from './slate/plugins';
-
-import { ImageUploader } from './services';
+import { withAllPlugins } from './slate/plugins';
 
 import './stylesheets/App.scss';
 
 const App = () => {
-  const editor = useMemo(() => withInlineMath(withImage(withInline(withHistory(withReact(createEditor()))))), []);
+  const editor = useMemo(() => withAllPlugins(withHistory(withReact(createEditor()))), []);
   const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
 
   const onValueChange = value => {
