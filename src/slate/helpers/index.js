@@ -66,19 +66,19 @@ const HOTKEYS = {
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
   "mod+u": (event, editor) => onMarkHotkeyDown(event, editor, "underline"),
   "mod+=": (event, editor) => onBlockHotkeyDown(event, editor, "math"),
-  "mod+e": (event, editor) => onMathInlineKeyDown(event, editor),
-  "enter": (event, editor) => onReturnKeyDown(editor),
+  "mod+e": (event, editor) => onInlineMathKeyDown(event, editor),
+  "enter": (event, editor) => onReturnKeyDown(event, editor),
 };
 
-const onMathInlineKeyDown = (event, editor) => {
+const onInlineMathKeyDown = (event, editor) => {
   event.preventDefault();
   Transforms.insertNodes(
     editor,
-    { type: "mathInline", children: [{ text: ""}] },
+    { type: "inlineMath", children: [{ text: ""}] },
   );
 };
 
-const onReturnKeyDown = editor => {
+const onReturnKeyDown = (event, editor) => {
   if (MioHelpers.isBlockActive(editor, "math"))
     setTimeout(() => MioHelpers.toggleBlock(editor, 'paragraph'), 0);
   if (MioHelpers.isBlockActive(editor, "image"))
