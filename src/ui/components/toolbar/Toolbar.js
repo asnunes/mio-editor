@@ -2,6 +2,7 @@ import React from 'react';
 import { ToggleButton, ButtonsGroup } from '..';
 import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG,
   StrikeThroughSVG, CodeSVG, ImageSVG, MathSVG } from './icons';
+import { GenericButton } from '../GenericButton';
 
 export const Toolbar = props => {
   return (
@@ -41,9 +42,7 @@ export const Toolbar = props => {
         />
       </ButtonsGroup>
       <ButtonsGroup>
-        <ToggleButton
-          type="block"
-          format="image"
+        <GenericButton
           SVG={ImageSVG}
         />
         <ToggleButton
