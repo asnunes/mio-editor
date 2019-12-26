@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c71a6d77f919eeba23a5074bd7ac6f26",
+    "revision": "5dec05ea2c0373b26d5e1cfb861d53b4",
     "url": "/mio-editor/index.html"
   },
   {
-    "revision": "f93800e604112c48f959",
-    "url": "/mio-editor/static/css/main.d0f3588c.chunk.css"
+    "revision": "2a555888d2628a4007c2",
+    "url": "/mio-editor/static/css/main.262ef944.chunk.css"
   },
   {
-    "revision": "ddd6eb69ceb2590519e0",
-    "url": "/mio-editor/static/js/2.a3e26f82.chunk.js"
+    "revision": "bbdfffe03984cdc5c681",
+    "url": "/mio-editor/static/js/2.045996f6.chunk.js"
   },
   {
     "revision": "b3eb9908750b24d442a4af9913101d5c",
-    "url": "/mio-editor/static/js/2.a3e26f82.chunk.js.LICENSE"
+    "url": "/mio-editor/static/js/2.045996f6.chunk.js.LICENSE"
   },
   {
-    "revision": "f93800e604112c48f959",
-    "url": "/mio-editor/static/js/main.c9966830.chunk.js"
+    "revision": "2a555888d2628a4007c2",
+    "url": "/mio-editor/static/js/main.23a15c79.chunk.js"
   },
   {
     "revision": "911b3cf60d286a6929aa",
@@ -32,8 +32,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mio-editor/static/media/code-icon.e8e8f759.svg"
   },
   {
+    "revision": "205a843273edb243c80cffafdc778fcb",
+    "url": "/mio-editor/static/media/image-icon.205a8432.svg"
+  },
+  {
     "revision": "7fd46e7260122158bbcc4dfb517012b5",
     "url": "/mio-editor/static/media/italic-icon.7fd46e72.svg"
+  },
+  {
+    "revision": "36f03ff63bc3d6e0c5505ff120d9ca5f",
+    "url": "/mio-editor/static/media/math-icon.36f03ff6.svg"
   },
   {
     "revision": "64bb4a16160cc700cd37d14a546377de",
