@@ -9,8 +9,8 @@ export const ImageButton = () => {
   const editor = useSlate();
   const imageInput = useRef(null);
 
-  const [isButtonActive, setIsButtonActive] = useState(false);
-  useEffect(() => setIsButtonActive(MioHelpers.isBlockActive(editor, 'paragraph')));
+  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  useEffect(() => setIsButtonEnabled(MioHelpers.isBlockActive(editor, 'paragraph')));
   
   function uploadImage(event) {
     if (event.target.files.length === 0) return; 
@@ -23,7 +23,7 @@ export const ImageButton = () => {
   };
 
   function onImageButtonMouseDown(event) {
-    if (!isButtonActive) return;
+    if (!isButtonEnabled) return;
 
     event.preventDefault();
     imageInput.current.value = null;
@@ -33,9 +33,9 @@ export const ImageButton = () => {
   return (
     <div
       onMouseDown={onImageButtonMouseDown}
-      style={_getButtonStyle(isButtonActive)}
+      style={_getButtonStyle(isButtonEnabled)}
     >
-      <ImageSVG style={_getIconStyle(isButtonActive)}/>
+      <ImageSVG style={_getIconStyle(isButtonEnabled)}/>
       <input
           id="file-upload"
           type="file"
@@ -48,13 +48,13 @@ export const ImageButton = () => {
   );
 };
 
-const _getButtonStyle = isButtonActive => ({
-  cursor: isButtonActive ? 'pointer' : 'arrow',
+const _getButtonStyle = isButtonEnabled => ({
+  cursor: isButtonEnabled ? 'pointer' : 'arrow',
   padding: '0 10px',
 });
 
-const _getIconStyle = isButtonActive => ({
-  opacity: isButtonActive ? '1' : '0.5',
+const _getIconStyle = isButtonEnabled => ({
+  opacity: isButtonEnabled ? '1' : '0.5',
   width: '20px',
   height: '20px',
 });
