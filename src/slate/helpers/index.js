@@ -35,6 +35,7 @@ export const MioHelpers = {
   },
   toggleBlock(editor, blockType) {
     const isActive = MioHelpers.isBlockActive(editor, blockType);
+    if (blockType === 'math' && !MioHelpers.isLineEmpty(editor)) return Editor.insertText(editor, "$");
     Transforms.setNodes(
       editor,
       { type: isActive ? 'paragraph' : blockType },
@@ -74,7 +75,7 @@ const onMathInlineKeyDown = (event, editor) => {
     editor,
     { type: "mathInline", children: [{ text: ""}] },
   );
-}
+};
 
 const onReturnKeyDown = editor => {
   if (MioHelpers.isBlockActive(editor, "math"))
@@ -84,7 +85,7 @@ const onReturnKeyDown = editor => {
       editor,
       { type: 'paragraph', children: [{ text: ""}] },
     );
-}
+};
 
 const onBlockHotkeyDown = (event, editor, blockType) => {
   preventDefaultForEventAndCall(event, MioHelpers.toggleBlock, editor, blockType);
