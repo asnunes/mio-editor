@@ -1,3 +1,7 @@
 import React from 'react';
 
-export const HeaderElement = props => <h2 {...props.attributes}>{props.children}</h2>;
+export const HeaderElement = ({ attributes, children }) => (
+  <h2 {...attributes}>
+    {children}
+  </h2>
+);

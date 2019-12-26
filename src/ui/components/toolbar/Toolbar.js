@@ -1,5 +1,6 @@
 import React from 'react';
-import { ToggleButton, ButtonsGroup, ImageButton } from '..';
+import { ButtonsGroup } from '../buttons-group';
+import { GenericToggleButton, ImageButton, CodeButton } from '../buttons';
 import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG,
   StrikeThroughSVG, CodeSVG, MathSVG } from './icons';
 
@@ -7,42 +8,38 @@ export const Toolbar = props => {
   return (
     <div style={_getStyle()}>
       <ButtonsGroup>
-        <ToggleButton
+        <GenericToggleButton
           type="block"
           format="header"
           SVG={TitleSVG}
         />
       </ButtonsGroup>
       <ButtonsGroup>
-        <ToggleButton
+        <GenericToggleButton
           type="mark"
           format="bold"
           SVG={BoldSVG}
         />
-        <ToggleButton
+        <GenericToggleButton
           type="mark"
           format="italic"
           SVG={ItalicSVG}
         />
-        <ToggleButton
+        <GenericToggleButton
           type="mark"
           format="underline"
           SVG={UnderlineSVG}
         />
-        <ToggleButton
+        <GenericToggleButton
           type="mark"
           format="strikethrough"
           SVG={StrikeThroughSVG}
         />
-        <ToggleButton
-          type="mark"
-          format="code"
-          SVG={CodeSVG}
-        />
+        <CodeButton/>
       </ButtonsGroup>
       <ButtonsGroup>
         <ImageButton/>
-        <ToggleButton
+        <GenericToggleButton
           type="block"
           format="math"
           SVG={MathSVG}
