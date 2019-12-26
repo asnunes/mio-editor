@@ -1,5 +1,6 @@
 .react-resizable {
   position: relative;
+  margin: auto;
 }
 .react-resizable-handle {
   position: absolute;

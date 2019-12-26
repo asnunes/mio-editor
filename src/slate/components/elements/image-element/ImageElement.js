@@ -63,7 +63,7 @@ export const ImageElement = ({attributes, element, children}) => {
   
   return (
     <div {...attributes}>
-      <div contentEditable={false}>
+      <div contentEditable={false} style={{display: 'flex'}}>
         <ResizableBox
           className="box"
           width={width}
