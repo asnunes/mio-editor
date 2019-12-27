@@ -60,7 +60,7 @@ export const MioHelpers = {
 
 const HOTKEYS = {
   "mod+h": (event, editor) => onBlockHotkeyDown(event, editor, "header"),
-  "mod+;": (event, editor) => onMarkHotkeyDown(event, editor, "code"),
+  "mod+;": (event, editor) => onCodeKeyDown(event, editor),
   "mod+b": (event, editor) => onMarkHotkeyDown(event, editor, "bold"),
   "mod+s": (event, editor) => onMarkHotkeyDown(event, editor, "strikethrough"),
   "mod+i": (event, editor) => onMarkHotkeyDown(event, editor, "italic"),
@@ -77,6 +77,13 @@ const onInlineMathKeyDown = (event, editor) => {
     { type: "inlineMath", children: [{ text: ""}] },
   );
 };
+
+const onCodeKeyDown = (event, editor) => {
+  const toggleBlockOrMark = MioHelpers.isLineEmpty(editor) ? 
+    MioHelpers.toggleBlock : MioHelpers.toggleMark;
+
+  return preventDefaultForEventAndCall(event, toggleBlockOrMark, editor, 'code');
+}
 
 const onReturnKeyDown = (event, editor) => {
   if (MioHelpers.isBlockActive(editor, "math"))
