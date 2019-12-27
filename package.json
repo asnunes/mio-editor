@@ -3,21 +3,35 @@
   "name": "mio-editor",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asnunes/mio-editor.git"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ]
+  },
+  "peerDependencies": {
+    "@testing-library/jest-dom": "4.x.x",
+    "@testing-library/react": "9.x.x",
+    "@testing-library/user-event": "7.x.x",
+    "is-hotkey": "0.1.x",
+    "react": "16.12.x",
+    "react-dom": "16.12.x",
+    "react-mathjax2": "0.0.2",
+    "react-resizable": "1.10.x",
+    "react-scripts": "3.3.x",
+    "serialize-javascript": "2.1.x",
+    "slate": "0.57.x",
+    "slate-history": "0.57.x",
+    "slate-react": "0.57.x"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "is-hotkey": "^0.1.6",
-    "node-sass": "^4.12.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-mathjax2": "^0.0.2",
-    "react-resizable": "^1.10.1",
-    "react-scripts": "3.3.0",
-    "serialize-javascript": "^2.1.1",
-    "slate": "^0.57.0",
-    "slate-history": "^0.57.1",
-    "slate-react": "^0.57.0"
+    "node-sass": "^4.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,7 +39,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "publish:npm": "SET NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/lib --out-dir dist --copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +58,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
     "gh-pages": "^2.1.1"
   }
 }
