@@ -12,7 +12,7 @@ export const GenericToggleButton = ({ type, format, SVG }) => {
   useEffect(() => {
     setIsButtonEnabled(MioHelpers.isBlockActive(editor, 'paragraph'))
     setIsButtonToggled(_isButtonToggled(editor, type, format));
-  });
+  }, [editor.selection, editor.children, type, format]);
   
   function onButtonMouseDown(e) {
     e.preventDefault();

@@ -10,7 +10,9 @@ export const ImageButton = () => {
   const imageInput = useRef(null);
 
   const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  useEffect(() => setIsButtonEnabled(MioHelpers.isBlockActive(editor, 'paragraph')));
+  useEffect(() => setIsButtonEnabled(MioHelpers.isBlockActive(editor, 'paragraph')),
+    [editor.selection, editor.children]
+  );
   
   function uploadImage(event) {
     if (event.target.files.length === 0) return; 

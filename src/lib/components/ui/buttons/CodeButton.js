@@ -12,7 +12,7 @@ export const CodeButton = () => {
 
   useEffect(() => {
     setIsBlock(MioHelpers.isLineEmpty(editor))
-  });
+  }, [editor.children, editor.selection]);
 
   return (
     <GenericToggleButton
