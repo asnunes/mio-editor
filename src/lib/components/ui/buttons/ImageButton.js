@@ -3,7 +3,7 @@ import { useSlate } from 'slate-react';
 
 import { ImageUploader } from '../../../services';
 import { ImageSVG } from '../toolbar/icons';
-import { MioHelpers } from '../../../slate/helpers';
+import { MioHelpers } from '../../../helpers';
 
 export const ImageButton = () => {
   const editor = useSlate();

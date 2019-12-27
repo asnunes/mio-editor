@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ReactEditor, useSlate } from 'slate-react';
 
-import { MioHelpers } from '../../../slate/helpers';
+import { MioHelpers } from '../../../helpers';
 
 export const GenericToggleButton = ({ type, format, SVG }) => {
   const editor = useSlate();

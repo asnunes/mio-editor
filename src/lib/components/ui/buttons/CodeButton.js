@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSlate } from 'slate-react';
 
 import { GenericToggleButton } from '.';
-import { MioHelpers } from '../../../slate/helpers';
+import { MioHelpers } from '../../../helpers';
 
 import { CodeSVG } from '../toolbar/icons';
 
