@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSlate } from 'slate-react';
 
 import { GenericToggleButton } from '.';
@@ -8,11 +8,7 @@ import { CodeSVG } from '../toolbar/icons';
 
 export const CodeButton = () => {
   const editor = useSlate();
-  const [isBlock, setIsBlock] = useState(false);
-
-  useEffect(() => {
-    setIsBlock(MioHelpers.isLineEmpty(editor))
-  }, [editor.children, editor.selection]);
+  const isBlock = MioHelpers.isLineEmpty(editor);
 
   return (
     <GenericToggleButton

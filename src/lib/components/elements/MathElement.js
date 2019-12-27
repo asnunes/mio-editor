@@ -10,7 +10,7 @@ export const MathElement = ({attributes, element, children}) => {
   const focused = useFocused();
   const editor = useSlate();
 
-  useEffect(() => setMathString(element.children[0].text || ""));
+  useEffect(() => setMathString(element.children[0].text || ""), [element.children]);
 
   function onMathClick(e) {
     ReactEditor.focus(editor);

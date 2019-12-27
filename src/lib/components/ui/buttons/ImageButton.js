@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useSlate } from 'slate-react';
 
 import { ImageUploader } from '../../../services';
@@ -8,11 +8,7 @@ import { MioHelpers } from '../../../helpers';
 export const ImageButton = () => {
   const editor = useSlate();
   const imageInput = useRef(null);
-
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  useEffect(() => setIsButtonEnabled(MioHelpers.isBlockActive(editor, 'paragraph')),
-    [editor.selection, editor.children]
-  );
+  const isButtonEnabled = MioHelpers.isBlockActive(editor, 'paragraph');
   
   function uploadImage(event) {
     if (event.target.files.length === 0) return; 

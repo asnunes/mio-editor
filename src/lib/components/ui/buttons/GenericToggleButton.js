@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ReactEditor, useSlate } from 'slate-react';
 
 import { MioHelpers } from '../../../helpers';
 
 export const GenericToggleButton = ({ type, format, SVG }) => {
   const editor = useSlate();
-
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
-  const [isButtonToggled, setIsButtonToggled] = useState(false);
-
-  useEffect(() => {
-    setIsButtonEnabled(MioHelpers.isBlockActive(editor, 'paragraph'))
-    setIsButtonToggled(_isButtonToggled(editor, type, format));
-  }, [editor.selection, editor.children, type, format]);
+  const isButtonEnabled = MioHelpers.isBlockActive(editor, 'paragraph');
+  const isButtonToggled = _isButtonToggled(editor, type, format);
   
   function onButtonMouseDown(e) {
     e.preventDefault();
