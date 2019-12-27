@@ -78,6 +78,7 @@ export const ImageElement = ({attributes, element, children}) => {
           <img
             ref={imgRef}
             src={element.base64}
+            alt="mio editor custom"
             style={_getImgStyle(selected, focused)}
           />
         </ResizableBox>

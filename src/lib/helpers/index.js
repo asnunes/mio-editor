@@ -53,7 +53,7 @@ export const MioHelpers = {
       if (isHotkey(key, event)) {
         HOTKEYS[key](event, editor);
         return true;
-      }
+      } return false;
     });
   }
 };

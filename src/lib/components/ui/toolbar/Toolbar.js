@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonsGroup } from '../buttons-group';
 import { GenericToggleButton, ImageButton, CodeButton } from '../buttons';
 import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG,
-  StrikeThroughSVG, CodeSVG, MathSVG } from './icons';
+  StrikeThroughSVG, MathSVG } from './icons';
 
 export const Toolbar = props => {
   return (
