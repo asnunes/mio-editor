@@ -10,7 +10,6 @@ export const GenericToggleButton = ({ type, format, SVG }) => {
   
   function onButtonMouseDown(e) {
     e.preventDefault();
-    console.log(type, format);
     _toggleBlockOrMark(editor, type, format);
     ReactEditor.focus(editor);
   }
