@@ -68,6 +68,7 @@ const HOTKEYS = {
   "mod+=": (event, editor) => onBlockHotkeyDown(event, editor, "math"),
   "mod+e": (event, editor) => onInlineMathKeyDown(event, editor),
   "enter": (event, editor) => onReturnKeyDown(event, editor),
+  "shift+enter": (event, editor) => onShiftReturnKeyDown(event, editor),
 };
 
 const onInlineMathKeyDown = (event, editor) => {
@@ -85,14 +86,17 @@ const onCodeKeyDown = (event, editor) => {
   return preventDefaultForEventAndCall(event, toggleBlockOrMark, editor, 'code');
 }
 
+const onShiftReturnKeyDown = (event, editor) => {
+  event.preventDefault();
+  if (MioHelpers.isBlockActive(editor, "code") || MioHelpers.isBlockActive(editor, "image"))
+    insertNewParagraph(editor);
+};
+
 const onReturnKeyDown = (event, editor) => {
   if (MioHelpers.isBlockActive(editor, "math"))
     setTimeout(() => MioHelpers.toggleBlock(editor, 'paragraph'), 0);
   if (MioHelpers.isBlockActive(editor, "image"))
-    Transforms.insertNodes(
-      editor,
-      { type: 'paragraph', children: [{ text: ""}] },
-    );
+    insertNewParagraph(editor);
 };
 
 const onBlockHotkeyDown = (event, editor, blockType) => {
@@ -107,3 +111,10 @@ const preventDefaultForEventAndCall = (event, fn, ...args) => {
   event.preventDefault();
   fn(...args);
 };
+
+const insertNewParagraph = editor => {
+  Transforms.insertNodes(
+    editor,
+    { type: 'paragraph', children: [{ text: ""}] },
+  );
+}
