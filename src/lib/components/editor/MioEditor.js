@@ -12,19 +12,13 @@ import { withAllPlugins } from '../../plugins';
 import './stylesheets/reset.css';
 import './stylesheets/style.css';
 
-export const MioEditor = () => {
+export const MioEditor = (props) => {
   const editor = useMemo(() => withAllPlugins(withHistory(withReact(createEditor()))), []);
-  const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
+  const [value, setValue] = useState(props.value || initialValue);
 
   const onValueChange = value => {
     setValue(value);
-    saveInLocalStorage(value);
-  }
-
-  const saveInLocalStorage = value => {
-    const content = JSON.stringify(value);
-    localStorage.setItem('content', content);
-    console.log(content);
+    if (props.onValueChange) props.onValueChange(value);
   }
   
   return (
