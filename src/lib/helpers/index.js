@@ -1,6 +1,5 @@
 import { Editor, Transforms, Text } from "slate";
 import isHotkey from 'is-hotkey';
-import { MioEditor } from "../components/editor";
 
 export const MioHelpers = {
   isMarkActive(editor, markType) {
