@@ -1,5 +1,6 @@
 import { Editor, Transforms, Text } from "slate";
 import isHotkey from 'is-hotkey';
+import { MioEditor } from "../components/editor";
 
 export const MioHelpers = {
   isMarkActive(editor, markType) {
@@ -69,6 +70,7 @@ const HOTKEYS = {
   "mod+e": (event, editor) => onInlineMathKeyDown(event, editor),
   "enter": (event, editor) => onReturnKeyDown(event, editor),
   "shift+enter": (event, editor) => onShiftReturnKeyDown(event, editor),
+  "tab": (event, editor) => onTabKeyDown(event, editor),
 };
 
 const onInlineMathKeyDown = (event, editor) => {
@@ -91,6 +93,11 @@ const onShiftReturnKeyDown = (event, editor) => {
   if (MioHelpers.isBlockActive(editor, "code") || MioHelpers.isBlockActive(editor, "image"))
     insertNewParagraph(editor);
 };
+
+const onTabKeyDown = (event, editor) => {
+  if (MioHelpers.isBlockActive(editor, "code"))
+    preventDefaultForEventAndCall(event, Transforms.insertText, editor, "    ");
+}
 
 const onReturnKeyDown = (event, editor) => {
   if (MioHelpers.isBlockActive(editor, "math"))
