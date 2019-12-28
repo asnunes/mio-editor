@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/mio-editor/static/css/main.262ef944.chunk.css",
-    "main.js": "/mio-editor/static/js/main.fc0f1340.chunk.js",
-    "main.js.map": "/mio-editor/static/js/main.fc0f1340.chunk.js.map",
-    "runtime-main.js": "/mio-editor/static/js/runtime-main.e2abb17a.js",
-    "runtime-main.js.map": "/mio-editor/static/js/runtime-main.e2abb17a.js.map",
-    "static/js/2.dfc72817.chunk.js": "/mio-editor/static/js/2.dfc72817.chunk.js",
-    "static/js/2.dfc72817.chunk.js.map": "/mio-editor/static/js/2.dfc72817.chunk.js.map",
+    "main.css": "/mio-editor/static/css/main.86add905.chunk.css",
+    "main.js": "/mio-editor/static/js/main.28c1b96a.chunk.js",
+    "main.js.map": "/mio-editor/static/js/main.28c1b96a.chunk.js.map",
+    "runtime-main.js": "/mio-editor/static/js/runtime-main.9b018795.js",
+    "runtime-main.js.map": "/mio-editor/static/js/runtime-main.9b018795.js.map",
+    "static/js/2.f27a9ba1.chunk.js": "/mio-editor/static/js/2.f27a9ba1.chunk.js",
+    "static/js/2.f27a9ba1.chunk.js.map": "/mio-editor/static/js/2.f27a9ba1.chunk.js.map",
     "index.html": "/mio-editor/index.html",
-    "precache-manifest.7ff8db34efbbf3a3d74c113580d1bec6.js": "/mio-editor/precache-manifest.7ff8db34efbbf3a3d74c113580d1bec6.js",
+    "precache-manifest.94c2d41591706f5b7081b819c2b61be6.js": "/mio-editor/precache-manifest.94c2d41591706f5b7081b819c2b61be6.js",
     "service-worker.js": "/mio-editor/service-worker.js",
-    "static/css/main.262ef944.chunk.css.map": "/mio-editor/static/css/main.262ef944.chunk.css.map",
-    "static/js/2.dfc72817.chunk.js.LICENSE": "/mio-editor/static/js/2.dfc72817.chunk.js.LICENSE",
+    "static/css/main.86add905.chunk.css.map": "/mio-editor/static/css/main.86add905.chunk.css.map",
+    "static/js/2.f27a9ba1.chunk.js.LICENSE": "/mio-editor/static/js/2.f27a9ba1.chunk.js.LICENSE",
     "static/media/bold-icon.f50b201a.svg": "/mio-editor/static/media/bold-icon.f50b201a.svg",
     "static/media/code-icon.e8e8f759.svg": "/mio-editor/static/media/code-icon.e8e8f759.svg",
     "static/media/image-icon.205a8432.svg": "/mio-editor/static/media/image-icon.205a8432.svg",
@@ -22,9 +22,9 @@
     "static/media/underline-icon.cc647f2f.svg": "/mio-editor/static/media/underline-icon.cc647f2f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e2abb17a.js",
-    "static/js/2.dfc72817.chunk.js",
-    "static/css/main.262ef944.chunk.css",
-    "static/js/main.fc0f1340.chunk.js"
+    "static/js/runtime-main.9b018795.js",
+    "static/js/2.f27a9ba1.chunk.js",
+    "static/css/main.86add905.chunk.css",
+    "static/js/main.28c1b96a.chunk.js"
   ]
 }
