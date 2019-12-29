@@ -56,24 +56,3 @@ const App = () => {
   );
 };
 ```
-
-Just import MioEditor. Editor's value is handled by ```value``` and ```onValueChange``` props.
-
-```
-import MioEditor from 'mio-editor';
-
-const App = () => {
-  const [value, setValue] = useState(initialValue);
-
-  const onValueChange = value => {
-    [...]
-  };
-
-  return (
-    <MioEditor
-      value={value}
-      onValueChange={onValueChange}
-    />
-  );
-};
-```
