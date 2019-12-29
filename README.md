@@ -27,7 +27,8 @@ const App = () => {
   const [value, setValue] = useState(initialValue);
 
   const onValueChange = value => {
-    [...]
+    setValue(value);
+    // [...]
   };
 
   return (
