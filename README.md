@@ -11,10 +11,10 @@ A Slate JS 0.5+ and React based WYSIWYG editor. It's a ready-to-use react compon
 - Code
 - Title
 - Paragraph:
--- Bold
--- Italic
--- Underline
--- Strikethrough
+  - Bold
+  - Italic
+  - Underline
+  - Strikethrough
 
 ### Usage
 
