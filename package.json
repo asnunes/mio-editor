@@ -1,11 +1,15 @@
 {
   "homepage": "http://asnunes.github.io/mio-editor",
   "name": "mio-editor",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/asnunes/mio-editor.git"
@@ -16,17 +20,14 @@
     ]
   },
   "peerDependencies": {
-    "react": "16.x.x",
-    "react-dom": "16.x.x"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "^3.3.0"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.3.2",
-    "@testing-library/user-event": "7.1.2",
     "is-hotkey": "0.1.6",
     "react-mathjax2": "0.0.2",
     "react-resizable": "1.10.1",
-    "react-scripts": "3.3.0",
     "serialize-javascript": "2.1.1",
     "slate": "0.57.0",
     "slate-history": "0.57.1",
@@ -39,8 +40,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "prepare": "install-peers",
-    "publish:npm": "rm -rf dist && mkdir dist && npx babel src/lib --out-dir dist --copy-files"
+    "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/lib --out-dir dist --copy-files"
   },
   "browserslist": {
     "production": [
@@ -58,6 +58,9 @@
     "@babel/cli": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "gh-pages": "^2.1.1",
-    "install-peers-cli": "^2.2.0"
+    "install-peers-cli": "^2.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "^3.3.0"
   }
 }
