@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MioEditor from '../lib';
+import { MioEditor } from '../lib';
 
 const App = () => {
   const [value, setValue] = useState(initialValue);

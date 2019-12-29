@@ -1,7 +1,7 @@
 {
   "homepage": "http://asnunes.github.io/mio-editor",
   "name": "mio-editor",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -16,7 +16,7 @@
   },
   "babel": {
     "presets": [
-      "@babel/react"
+      "@babel/preset-react"
     ]
   },
   "peerDependencies": {
