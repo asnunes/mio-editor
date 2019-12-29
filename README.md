@@ -39,3 +39,13 @@ const App = () => {
   );
 };
 ```
+
+### Dependencies
+
+React 16.X.X
+
+### Installation
+
+```
+npm install mio-editor --save
+```
