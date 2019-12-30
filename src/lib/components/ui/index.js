@@ -1,3 +1,3 @@
-export { Toolbar } from './toolbar';
-export { ButtonsGroup } from './buttons-group';
+export { Toolbar } from './Toolbar';
+export { ButtonsGroup } from './ButtonsGroup';
 export * from './buttons';

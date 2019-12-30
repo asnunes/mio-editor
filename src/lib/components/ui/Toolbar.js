@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonsGroup } from './buttons-group';
+import { ButtonsGroup } from './';
 import { GenericToggleButton, ImageButton, CodeButton } from './buttons';
 import { faHeading, faBold, faItalic, faUnderline, 
   faStrikethrough, faSquareRootAlt } from '@fortawesome/free-solid-svg-icons';
