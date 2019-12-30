@@ -23,6 +23,7 @@
     "is-hotkey": "0.1.6",
     "react-mathjax2": "0.0.2",
     "react-resizable": "1.10.1",
+    "react-svg": "^11.0.5",
     "serialize-javascript": "2.1.1",
     "slate": "0.57.0",
     "slate-history": "0.57.1",
@@ -51,9 +52,6 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
-    "@babel/plugin-proposal-export-default-from": "^7.7.4",
-    "@babel/plugin-proposal-export-namespace-from": "^7.7.4",
-    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "gh-pages": "^2.1.1",
     "install-peers-cli": "^2.2.0",
