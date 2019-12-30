@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import { useSlate } from 'slate-react';
+import { ReactSVG } from 'react-svg';
 
 import { ImageUploader } from '../../../services';
-import { ImageSVG } from '../toolbar/icons';
 import { MioHelpers } from '../../../helpers';
+
+import imageSVG from "../toolbar/icons/image-icon.svg";
 
 export const ImageButton = () => {
   const editor = useSlate();
@@ -33,7 +35,7 @@ export const ImageButton = () => {
       onMouseDown={onImageButtonMouseDown}
       style={_getButtonStyle(isButtonEnabled)}
     >
-      <ImageSVG style={_getIconStyle(isButtonEnabled)}/>
+      <ReactSVG src={imageSVG} style={_getIconStyle(isButtonEnabled)}/>
       <input
           id="file-upload"
           type="file"

@@ -1,8 +1,12 @@
 import React from 'react';
 import { ButtonsGroup } from '../buttons-group';
 import { GenericToggleButton, ImageButton, CodeButton } from '../buttons';
-import { TitleSVG, BoldSVG, ItalicSVG, UnderlineSVG,
-  StrikeThroughSVG, MathSVG } from './icons';
+import titleSVG from "./icons/title-icon.svg";
+import boldSVG from "./icons/bold-icon.svg";
+import italicSVG from "./icons/italic-icon.svg";
+import underlineSVG from "./icons/underline-icon.svg";
+import strikeThroughSVG from "./icons/strike-through-icon.svg";
+import mathSVG from "./icons/math-icon.svg";
 
 export const Toolbar = props => {
   return (
@@ -11,29 +15,29 @@ export const Toolbar = props => {
         <GenericToggleButton
           type="block"
           format="header"
-          SVG={TitleSVG}
+          svg={titleSVG}
         />
       </ButtonsGroup>
       <ButtonsGroup>
         <GenericToggleButton
           type="mark"
           format="bold"
-          SVG={BoldSVG}
+          svg={boldSVG}
         />
         <GenericToggleButton
           type="mark"
           format="italic"
-          SVG={ItalicSVG}
+          svg={italicSVG}
         />
         <GenericToggleButton
           type="mark"
           format="underline"
-          SVG={UnderlineSVG}
+          svg={underlineSVG}
         />
         <GenericToggleButton
           type="mark"
           format="strikethrough"
-          SVG={StrikeThroughSVG}
+          svg={strikeThroughSVG}
         />
         <CodeButton/>
       </ButtonsGroup>
@@ -42,7 +46,7 @@ export const Toolbar = props => {
         <GenericToggleButton
           type="block"
           format="math"
-          SVG={MathSVG}
+          svg={mathSVG}
         />
       </ButtonsGroup>
     </div> 

@@ -4,7 +4,7 @@ import { useSlate } from 'slate-react';
 import { GenericToggleButton } from '.';
 import { MioHelpers } from '../../../helpers';
 
-import { CodeSVG } from '../toolbar/icons';
+import codeSVG from '../toolbar/icons/code-icon.svg';
 
 export const CodeButton = () => {
   const editor = useSlate();
@@ -14,7 +14,7 @@ export const CodeButton = () => {
     <GenericToggleButton
       type={isBlock ? "block" : "mark"}
       format="code"
-      SVG={CodeSVG}
+      svg={codeSVG}
     />
   );
 };
