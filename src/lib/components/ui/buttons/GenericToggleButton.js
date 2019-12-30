@@ -1,10 +1,10 @@
 import React from 'react';
 import { ReactEditor, useSlate } from 'slate-react';
-import { ReactSVG } from 'react-svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { MioHelpers } from '../../../helpers';
 
-export const GenericToggleButton = ({ type, format, svg }) => {
+export const GenericToggleButton = ({ type, format, icon }) => {
   const editor = useSlate();
   const isButtonEnabled = MioHelpers.isBlockActive(editor, 'paragraph');
   const isButtonToggled = _isButtonToggled(editor, type, format);
@@ -20,10 +20,7 @@ export const GenericToggleButton = ({ type, format, svg }) => {
       onMouseDown={e => _isActive(isButtonEnabled, isButtonToggled) ? onButtonMouseDown(e) : null}
       style={_getButtonStyle(isButtonEnabled, isButtonToggled)}
     >
-      <ReactSVG 
-        src={svg}
-        style={_getIconStyle(isButtonEnabled, isButtonToggled)}
-      />
+      <FontAwesomeIcon icon={icon} style={_getIconStyle(isButtonEnabled, isButtonToggled)}/>
     </div>
   );
 };

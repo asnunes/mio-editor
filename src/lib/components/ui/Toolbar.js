@@ -1,43 +1,39 @@
 import React from 'react';
-import { ButtonsGroup } from '../buttons-group';
-import { GenericToggleButton, ImageButton, CodeButton } from '../buttons';
-import titleSVG from "./icons/title-icon.svg";
-import boldSVG from "./icons/bold-icon.svg";
-import italicSVG from "./icons/italic-icon.svg";
-import underlineSVG from "./icons/underline-icon.svg";
-import strikeThroughSVG from "./icons/strike-through-icon.svg";
-import mathSVG from "./icons/math-icon.svg";
+import { ButtonsGroup } from './buttons-group';
+import { GenericToggleButton, ImageButton, CodeButton } from './buttons';
+import { faHeading, faBold, faItalic, faUnderline, 
+  faStrikethrough, faSquareRootAlt } from '@fortawesome/free-solid-svg-icons';
 
-export const Toolbar = props => {
+export const Toolbar = () => {
   return (
     <div style={_getStyle()}>
       <ButtonsGroup>
         <GenericToggleButton
           type="block"
           format="header"
-          svg={titleSVG}
+          icon={faHeading}
         />
       </ButtonsGroup>
       <ButtonsGroup>
         <GenericToggleButton
           type="mark"
           format="bold"
-          svg={boldSVG}
+          icon={faBold}
         />
         <GenericToggleButton
           type="mark"
           format="italic"
-          svg={italicSVG}
+          icon={faItalic}
         />
         <GenericToggleButton
           type="mark"
           format="underline"
-          svg={underlineSVG}
+          icon={faUnderline}
         />
         <GenericToggleButton
           type="mark"
           format="strikethrough"
-          svg={strikeThroughSVG}
+          icon={faStrikethrough}
         />
         <CodeButton/>
       </ButtonsGroup>
@@ -46,7 +42,7 @@ export const Toolbar = props => {
         <GenericToggleButton
           type="block"
           format="math"
-          svg={mathSVG}
+          icon={faSquareRootAlt}
         />
       </ButtonsGroup>
     </div> 

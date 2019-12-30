@@ -1,11 +1,10 @@
 import React, { useRef } from 'react';
 import { useSlate } from 'slate-react';
-import { ReactSVG } from 'react-svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 
 import { ImageUploader } from '../../../services';
 import { MioHelpers } from '../../../helpers';
-
-import imageSVG from "../toolbar/icons/image-icon.svg";
 
 export const ImageButton = () => {
   const editor = useSlate();
@@ -35,7 +34,7 @@ export const ImageButton = () => {
       onMouseDown={onImageButtonMouseDown}
       style={_getButtonStyle(isButtonEnabled)}
     >
-      <ReactSVG src={imageSVG} style={_getIconStyle(isButtonEnabled)}/>
+      <FontAwesomeIcon icon={faImage} style={_getIconStyle(isButtonEnabled)}/>
       <input
           id="file-upload"
           type="file"
