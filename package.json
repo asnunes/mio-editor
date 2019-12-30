@@ -14,15 +14,6 @@
     "type": "git",
     "url": "https://github.com/asnunes/mio-editor.git"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-export-default-from",
-      "@babel/plugin-proposal-export-namespace-from"
-    ]
-  },
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -44,7 +35,7 @@
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
-    "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/lib --out-dir dist --copy-files"
+    "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/lib --out-dir dist --copy-files --plugins=@babel/plugin-proposal-export-namespace-from"
   },
   "browserslist": {
     "production": [
@@ -62,6 +53,7 @@
     "@babel/cli": "^7.7.7",
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "gh-pages": "^2.1.1",
     "install-peers-cli": "^2.2.0",
