@@ -6,8 +6,6 @@ import json from 'rollup-plugin-json';
 import replace from 'rollup-plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import postcss from 'rollup-plugin-postcss';
-import svg from 'rollup-plugin-svg';
 
 function configure() {
   const input = 'src/lib/index.js';
@@ -20,12 +18,6 @@ function configure() {
   };
 
   const plugins = [
-    postcss({
-      extract: false,
-      modules: true,
-      use: ['sass'],
-    }),
-    svg(),
     resolve({
       browser: true,
     }),
