@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelected, useFocused, ReactEditor, useSlate } from 'slate-react';
 import { Transforms } from 'slate';
-import { ResizableBox } from 'react-resizable';
-
-import './style.css';
+import { Resizable } from "re-resizable";
 
 export const ImageElement = ({attributes, element, children}) => {
   const selected = useSelected();
@@ -13,35 +11,24 @@ export const ImageElement = ({attributes, element, children}) => {
   const [width, setWidth] = useState(element.width || 200);
   const [height, setHeight] = useState(element.height || 200);
   const [theta, setTheta] = useState(Math.PI / 4); // 45 degrees or aspect ratio = 1
-  
+
   const imgRef = useRef(null);
-  
-  const minimumWidth = 30 * Math.cos(theta);
-  const minimumHeight = 30 * Math.sin(theta);
 
-  const maximumWidth = 500 * Math.cos(theta);
-  const maximumHeight = 500 * Math.sin(theta);
-
-  useEffect(setBestImageDimensions, []);
-
-  function onResize(e, data) {
-    setWidth(data.size.width);
-    setHeight(data.size.height);
-  }
-
-  function onResizeStart(e, data) {
+  function onResizeStart(e, direction, ref, d) {
     ReactEditor.focus(editor);
     Transforms.select(editor, getElementPath());
   };
 
-  function onResizeStop(e, data) {
-    updateElementDimensions(data.size);
+  function onResizeStop(e, direction, ref, d) {
+    updateElementDimensions(d.width, d.height);
+    setWidth(width + d.width);
+    setHeight(height + d.height);
   };
 
-  function updateElementDimensions(size) {
+  function updateElementDimensions(difWidth, difHeight) {
     Transforms.setNodes(
       editor,
-      { width: size.width, height: size.height },
+      { width: width + difWidth, height: difHeight + height },
       { at: getElementPath() },
       );
   };
@@ -53,8 +40,8 @@ export const ImageElement = ({attributes, element, children}) => {
     const naturalHeight = imgRef.current.naturalHeight;
     const naturalTheta = Math.atan(naturalHeight/naturalWidth);
 
-    const desirableWidth = 355 * Math.cos(naturalTheta);
-    const desirableHeight = 355 * Math.sin(naturalTheta);
+    const desirableWidth = 355.0 * Math.cos(naturalTheta);
+    const desirableHeight = 355.0 * Math.sin(naturalTheta);
 
     setWidth(Math.min(naturalWidth, desirableWidth));
     setHeight(Math.min(naturalHeight, desirableHeight));
@@ -63,30 +50,39 @@ export const ImageElement = ({attributes, element, children}) => {
   
   return (
     <div {...attributes}>
-      <div contentEditable={false} style={{display: 'flex'}}>
-        <ResizableBox
-          className="box"
-          width={width}
-          height={height}
-          onResize={onResize}
+      <div contentEditable={false} style={_getResizableStyle()}>
+        <Resizable
+          size={{ width, height }}
           onResizeStart={onResizeStart}
           onResizeStop={onResizeStop}
           lockAspectRatio={true}
-          minConstraints={[minimumWidth, minimumHeight]}
-          maxConstraints={[maximumWidth, maximumHeight]}
+          minWidth={minDiagonal * Math.cos(theta)}
+          minHeight={minDiagonal * Math.sin(theta)}
+          maxWidth={maxDiagonal * Math.cos(theta)}
+          maxHeight={maxDiagonal * Math.sin(theta)}
         >
           <img
             ref={imgRef}
             src={element.base64}
             alt="mio editor custom"
             style={_getImgStyle(selected, focused)}
+            onLoad={setBestImageDimensions}
           />
-        </ResizableBox>
+        </Resizable>
       </div>
       {children}
     </div>
   );
 };
+
+const minDiagonal = 100;
+const maxDiagonal = 700;
+
+const _getResizableStyle = () => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
 
 const _getImgStyle = (selected, focused) => ({
   display: 'block',
