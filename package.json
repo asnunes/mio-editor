@@ -1,7 +1,7 @@
 {
   "homepage": "http://asnunes.github.io/mio-editor",
   "name": "mio-editor",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
