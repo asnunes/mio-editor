@@ -40,7 +40,7 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "build:rollup": "rollup --config",
-    "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist && build:rollup && npx babel src/lib --out-dir dist --copy-files --plugins=@babel/plugin-proposal-export-namespace-from"
+    "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist && rollup --config && npx babel src/lib --out-dir dist --copy-files --plugins=@babel/plugin-proposal-export-namespace-from"
   },
   "browserslist": {
     "production": [
@@ -56,6 +56,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
+    "@babel/plugin-proposal-export-namespace-from": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
     "gh-pages": "^2.1.1",
     "install-peers-cli": "^2.2.0",
