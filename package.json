@@ -1,11 +1,12 @@
 {
   "homepage": "http://asnunes.github.io/mio-editor",
   "name": "mio-editor",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "keywords": ["editor", "WYSIWYG", "slate", "react", "equation", "formatting", "live", "rich-text", "browser"],
   "files": [
     "dist",
     "README.md",
