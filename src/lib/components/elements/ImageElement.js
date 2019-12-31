@@ -36,16 +36,13 @@ export const ImageElement = ({attributes, element, children}) => {
   function getElementPath() { return ReactEditor.findPath(editor, element) }
   
   function setBestImageDimensions() {
-    const naturalWidth = imgRef.current.naturalWidth;
-    const naturalHeight = imgRef.current.naturalHeight;
-    const naturalTheta = Math.atan(naturalHeight/naturalWidth);
+    const refWidth = element.width || imgRef.current.naturalWidth;
+    const refHeight = element.height || imgRef.current.naturalHeight;
+    const refTheta = Math.atan(refWidth/refHeight);
 
-    const desirableWidth = 355.0 * Math.cos(naturalTheta);
-    const desirableHeight = 355.0 * Math.sin(naturalTheta);
-
-    setWidth(Math.min(naturalWidth, desirableWidth));
-    setHeight(Math.min(naturalHeight, desirableHeight));
-    setTheta(naturalTheta);
+    setWidth(refWidth);
+    setHeight(refHeight);
+    setTheta(refTheta);
   };
   
   return (
