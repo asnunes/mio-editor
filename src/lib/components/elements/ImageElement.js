@@ -38,10 +38,14 @@ export const ImageElement = ({attributes, element, children}) => {
   function setBestImageDimensions() {
     const refWidth = element.width || imgRef.current.naturalWidth;
     const refHeight = element.height || imgRef.current.naturalHeight;
-    const refTheta = Math.atan(refWidth/refHeight);
+    const refTheta = Math.atan(refHeight/refWidth);
 
-    setWidth(refWidth);
-    setHeight(refHeight);
+    const desirableWidth = minDiagonal * Math.cos(refTheta);
+    const desirableHeight = minDiagonal * Math.sin(refTheta);
+    const refDiagonal = Math.sqrt(refWidth ** 2 + refHeight ** 2);
+
+    setWidth(_isRefDiagonalSmallerThanMinimum(refDiagonal) ? desirableWidth : refWidth);
+    setHeight(_isRefDiagonalSmallerThanMinimum(refDiagonal) ? desirableHeight : refHeight);
     setTheta(refTheta);
   };
   
@@ -74,6 +78,8 @@ export const ImageElement = ({attributes, element, children}) => {
 
 const minDiagonal = 100;
 const maxDiagonal = 700;
+
+const _isRefDiagonalSmallerThanMinimum = refDiagonal => refDiagonal < minDiagonal;
 
 const _getResizableStyle = () => ({
   display: "flex",
