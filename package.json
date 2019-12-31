@@ -26,7 +26,6 @@
     "is-hotkey": "0.1.6",
     "re-resizable": "^6.1.1",
     "react-mathjax2": "0.0.2",
-    "serialize-javascript": "2.1.1",
     "slate": "0.57.0",
     "slate-history": "0.57.1",
     "slate-react": "0.57.0"
@@ -68,7 +67,6 @@
     "react-scripts": "^3.3.0",
     "rollup": "^1.27.14",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-terser": "^5.1.3"
   }
