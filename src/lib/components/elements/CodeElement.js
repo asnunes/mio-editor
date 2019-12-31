@@ -12,7 +12,7 @@ const getPreDecoration = () => ({
   borderLeft:  '3px solid black',
   color: '#666',
   pageBreakInside: 'avoid',
-  padding: '0 1em',
+  padding: '.5em 1em',
   marginBottom: '1.6em',
   borderRadius: '5px',
   fontFamily: 'Courier New Courier monospace',
