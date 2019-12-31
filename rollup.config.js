@@ -1,10 +1,9 @@
 import babel from 'rollup-plugin-babel';
 import builtins from 'rollup-plugin-node-builtins';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import globals from 'rollup-plugin-node-globals';
-import json from 'rollup-plugin-json';
-import replace from 'rollup-plugin-replace';
-import resolve from 'rollup-plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import resolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 
 function configure() {
@@ -53,14 +52,12 @@ function configure() {
         'node_modules/esrever/esrever.js': [ 'reverse' ]
       },
     }),
-    json(),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     builtins(),
     babel({
       "presets": [
-        ["@babel/preset-env", { modules: false }],
         "@babel/preset-react"
       ],
       exclude: 'node_modules/**',
