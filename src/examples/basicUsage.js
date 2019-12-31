@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import { MioEditor } from '../lib';
 
 const App = () => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(JSON.parse(localStorage.getItem('content')) || initialValue);
 
   const onValueChange = value => {
     setValue(value);
-    console.log(JSON.stringify(value));
+    saveInLocalStorage(value);
   };
+
+  const saveInLocalStorage = value => {
+    const content = JSON.stringify(value);
+    localStorage.setItem('content', content);
+    console.log(content);
+  }
 
   return (
     <MioEditor
