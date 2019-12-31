@@ -54,9 +54,5 @@ const _getStyle = () => ({
   padding: '5px 0',
   borderBottom: '1px solid rgb(218, 220, 224)',
   zIndex: 110,
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  right: 0,
   background: 'white'
 });
