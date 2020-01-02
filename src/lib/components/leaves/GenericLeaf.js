@@ -30,4 +30,4 @@ const getCodeDecoration = leaf => {
     backgroundColor: '#eee',
     padding: '3px',
   } : {}
-}
+};

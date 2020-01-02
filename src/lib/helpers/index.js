@@ -23,6 +23,13 @@ export const MioHelpers = {
     });
     return !!match;
   },
+  clearMarks(editor) {
+    Transforms.setNodes(
+      editor,
+      LEAVES.reduce((acc, markType) => ({ [markType]: null, ...acc}), {}),
+      { match: node => Text.isText(node), split: true }
+    );
+  },
   toggleMark(editor, markType) {
     if (!MioHelpers.isBlockActive(editor, 'paragraph')) return;
 
@@ -35,8 +42,9 @@ export const MioHelpers = {
   },
   toggleBlock(editor, blockType) {
     const isActive = MioHelpers.isBlockActive(editor, blockType);
-    if (blockType === 'math' && !MioHelpers.isLineEmpty(editor)) return Editor.insertText(editor, "$");
-    
+    if (!isActive) MioHelpers.clearMarks(editor);
+    if (blockType === 'math' && !MioHelpers.isLineEmpty(editor)) return Editor.insertText(editor, "$");  
+
     Transforms.setNodes(
       editor,
       { type: isActive ? 'paragraph' : blockType },
@@ -57,6 +65,8 @@ export const MioHelpers = {
     });
   }
 };
+
+const LEAVES = ['bold', 'italic', 'strikethrough', 'underline', 'code'];
 
 const HOTKEYS = {
   "mod+h": (event, editor) => onBlockHotkeyDown(event, editor, "header"),
@@ -123,4 +133,4 @@ const insertNewParagraph = editor => {
     editor,
     { type: 'paragraph', children: [{ text: ""}] },
   );
-}
+};

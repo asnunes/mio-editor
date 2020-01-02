@@ -40,7 +40,7 @@ export const MioEditor = (props) => {
 };
 
 const MATH_JAX_OPTIONS = {
-  jax: ['input/ascii', 'output/SVG'],
+  jax: ['input/ascii', 'input/tex', 'output/SVG'],
   SVG: {
     linebreaks: {
       automatic: true,
