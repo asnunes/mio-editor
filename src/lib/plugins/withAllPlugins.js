@@ -1,7 +1,7 @@
-import { withCode, withImage, withInlineMath } from '.';
+import { withCode, withImage, withInlineMath, withTabShortcuts } from '.';
 
 export const withAllPlugins = editor => {
-  [withCode, withImage, withInlineMath].forEach(plugin => {
+  [withCode, withImage, withInlineMath, withTabShortcuts].forEach(plugin => {
     if (typeof plugin == 'function') plugin(editor);
   });
 

@@ -104,9 +104,9 @@ const onShiftReturnKeyDown = (event, editor) => {
 };
 
 const onTabKeyDown = (event, editor) => {
-  if (MioHelpers.isBlockActive(editor, "code"))
-    preventDefaultForEventAndCall(event, Transforms.insertText, editor, "    ");
-}
+  if (!MioHelpers.isBlockActive(editor, "math") && !MioHelpers.isBlockActive(editor, "image"))
+    preventDefaultForEventAndCall(event, editor.insertTabSpace);
+};
 
 const onReturnKeyDown = (event, editor) => {
   if (MioHelpers.isBlockActive(editor, "math"))
