@@ -46,12 +46,11 @@ const getMathViewStyle = (selected, focused) => {
     inlineSize: 'fit-content',
     margin: 'auto',
     padding: '5px',
-    borderRadius: '10px',
   };
   
   if (!selected || !focused) return defaultStyle;
   return {
-    boxShadow: '0 0 0 2px #80deea',
+    boxShadow: '0 0 0 2px #03396c',
     ...defaultStyle
   };
 };
@@ -62,7 +61,6 @@ const getMathEditorStyle = (selected, focused) => {
     left: '50%',
     bottom: 0,
     transform: 'translate(-50%, 120%)',
-    borderRadius: '10px',
     zIndex: 100,
   };
 
@@ -73,7 +71,8 @@ const getMathEditorStyle = (selected, focused) => {
   };
 
   return {
-    background: '#80deea',
+    background: 'white',
+    border: '#03396c solid 2px',
     fontSize: '0.8em',
     padding: '3px',
     minWidth: '20px',
