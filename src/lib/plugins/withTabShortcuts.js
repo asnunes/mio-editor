@@ -1,4 +1,4 @@
-import { Range, Transforms } from 'slate';
+import { Transforms } from 'slate';
 
 export const withTabShortcuts = editor => {
   editor.insertTabSpace = () => {
