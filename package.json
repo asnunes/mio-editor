@@ -39,6 +39,7 @@
     "react-mathjax2": "0.0.2",
     "slate": "0.57.0",
     "slate-history": "0.57.1",
+    "slate-hyperscript": "^0.57.1",
     "slate-react": "0.57.0"
   },
   "scripts": {
