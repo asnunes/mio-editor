@@ -11,7 +11,7 @@ import { withAllPlugins } from '../../plugins';
 
 export const MioEditor = (props) => {
   const editor = useMemo(() => withAllPlugins(withHistory(withReact(createEditor()))), []);
-  const [value, setValue] = useState(props.value || initialValue);
+  const [value, setValue] = useState(props.value);
 
   const onValueChange = value => {
     setValue(value);
@@ -49,13 +49,6 @@ const MATH_JAX_OPTIONS = {
   },
   showMathMenu: false,
 };
-
-const initialValue = [
-  {
-    type: 'paragraph',
-    children: [{ text: 'A line of a paragraph...'}],
-  },
-];
 
 const style = {
   width: '21cm',
