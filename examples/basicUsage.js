@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MioEditor } from '../lib';
+import { MioEditor } from '../src/lib';
 
 const App = () => {
   // It gets content save at browser local storage or default initial value defined below
