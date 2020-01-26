@@ -17,6 +17,8 @@ const deserialize = element => {
       return jsx('fragment', {}, children);
     case 'P':
       return jsx('element', { type: 'paragraph' }, children);
+    case 'STRONG':
+      return jsx('text', { "bold": true }, element.textContent);
     case 'BR':
       return "\n";
     default:
