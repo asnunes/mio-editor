@@ -17,7 +17,9 @@ const deserialize = element => {
       return jsx('fragment', {}, children);
     case 'P':
       return jsx('element', { type: 'paragraph' }, children);
+    case 'BR':
+      return "\n";
     default:
-      return el.textContent;
+      return element.textContent;
   }
 };
