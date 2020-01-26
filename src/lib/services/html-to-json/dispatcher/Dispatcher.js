@@ -1,4 +1,3 @@
-import { jsx } from 'slate-hyperscript';
 import { BaseNode, FragmentNode, ElementNode, TextNode } from '../nodes';
 
 export class Dispatcher {
@@ -11,15 +10,14 @@ export class Dispatcher {
     switch (this.element.nodeName) {
       case 'BODY':
         return new FragmentNode(this.element, this.children).deserialize();
-        return jsx('fragment', {}, this.children);
       case 'P':
-        return jsx('element', { type: 'paragraph' }, this.children);
+        return new ElementNode(this.element, 'paragraph', this.children).deserialize();
       case 'STRONG':
-        return jsx('text', { "bold": true }, this.element.textContent);
+        return new TextNode(this.element, 'bold', this.children).deserialize();
       case 'BR':
         return "\n";
       default:
-        return this.element.textContent;
+        return new BaseNode(this.element).deserialize();
     }
   }
 }

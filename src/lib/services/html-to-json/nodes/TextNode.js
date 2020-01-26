@@ -9,6 +9,6 @@ export class TextNode extends BaseNode {
   }
 
   deserialize() {
-    return jsx('text', { [this.attr]: this.attr }, this.textContent);
+    return jsx('text', { [this.attr]: true }, this.textContent);
   }
 }
