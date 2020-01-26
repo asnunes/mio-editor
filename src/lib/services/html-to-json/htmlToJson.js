@@ -1,4 +1,4 @@
-import { jsx } from 'slate-hyperscript';
+import { Dispatcher } from './dispatcher/Dispatcher';
 
 export const HtmlToJson = html => {
   const document = new DOMParser().parseFromString(html, 'text/html');
@@ -12,16 +12,5 @@ const deserialize = element => {
 
   const children = Array.from(element.childNodes).map(deserialize);
 
-  switch (element.nodeName) {
-    case 'BODY':
-      return jsx('fragment', {}, children);
-    case 'P':
-      return jsx('element', { type: 'paragraph' }, children);
-    case 'STRONG':
-      return jsx('text', { "bold": true }, element.textContent);
-    case 'BR':
-      return "\n";
-    default:
-      return element.textContent;
-  }
+  return new Dispatcher(element, children).dispatch();
 };

@@ -1,4 +1,4 @@
-const { HtmlToJson } = require('../../../lib/services/HtmlToJson');
+const { HtmlToJson } = require('../../../lib/services/html-to-json/htmlToJson');
 
 describe('#HtmlToJson', () => {
   describe('pass an html string containing a p tag', () => {
