@@ -20,9 +20,9 @@ A Slate JS 0.5+ and React based WYSIWYG editor. It's a ready-to-use react compon
 
 ### Why another WYSIWYG editor?
 
-1. It has support for math equation using [asciimath](http://asciimath.org/) syntax.
-2. Many editor available only offer a way to edit DOM, but it's difficult to get back edited content. Mio editor can load and update content as a simple JSON.
-3. It uses react from [slate](https://docs.slatejs.org/) framework to handle DOM. So you can use it individually or as a react component.
+1. It has support for **math equation** using [asciimath](http://asciimath.org/) syntax.
+2. Many editors available only offer a way to edit DOM, but it is difficult to get back edited content. Mio editor can **load and update content as a simple JSON**.
+3. It uses react from [slate](https://docs.slatejs.org/) framework to handle DOM. So **you can use it individually or as a react component**.
 
 ### Usage
 
@@ -117,7 +117,7 @@ Which represents the following visual content:
 ![editor content example](./docs/images/screenshot.png)
 
 
-It's possible to pass and initial value to editor. Just pass it to ```useState```, where initialValue is a JSON like above example. You can get more looking in the examples folder.
+It is possible to pass an initial value to editor. Just pass it to ```useState```, where initialValue is a JSON like the one above. You can get more examples looking in the examples folder.
 
 ```javascript
 const App = () => {
