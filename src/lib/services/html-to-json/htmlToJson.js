@@ -7,11 +7,14 @@ export const HtmlToJson = html => {
 };
 
 const deserialize = element => {
-  if (element.nodeType === 3) return element.textContent;
-  else if (element.nodeType !== 1) return null; //check node type 
+  if (_isTextNode(element)) return element.textContent;
+  else if (_isNotElementNode(element)) return null;
 
   const children = Array.from(element.childNodes).map(deserialize);
 
   const nodeDeserialize = new Dispatcher(element, children).dispatch();
   return nodeDeserialize.deserialize();
 };
+
+const _isTextNode = element => element.nodeType === 3;
+const _isNotElementNode = element => element.nodeType !== 1;
