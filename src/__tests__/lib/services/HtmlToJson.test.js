@@ -69,4 +69,29 @@ describe('#HtmlToJson', () => {
       expect(result).toEqual(expected);
     });
   });
+
+  describe('pass an html string containing a p tag with b tag', () => {
+    test('returns three paragraphs element with bold mark equals true in the middle one', () => {
+      const input = `<p>This is a <b>text</b> in a paragraph</p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            { text:"This is a " },
+            {
+              text:"text",
+              bold: true,
+            },
+            { text:" in a paragraph" },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
 });

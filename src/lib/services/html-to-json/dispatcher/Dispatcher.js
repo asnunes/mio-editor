@@ -12,6 +12,7 @@ export class Dispatcher {
         return new FragmentNode(this.children);
       case 'P':
         return new ElementNode('paragraph', this.children);
+      case 'B':
       case 'STRONG':
         return new TextNode(this.element.textContent, 'bold', this.children);
       case 'BR':
