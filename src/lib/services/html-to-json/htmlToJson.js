@@ -12,5 +12,6 @@ const deserialize = element => {
 
   const children = Array.from(element.childNodes).map(deserialize);
 
-  return new Dispatcher(element, children).dispatch();
+  const nodeDeserialize = new Dispatcher(element, children).dispatch();
+  return nodeDeserialize.deserialize();
 };

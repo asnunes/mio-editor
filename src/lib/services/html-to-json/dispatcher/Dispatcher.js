@@ -9,15 +9,15 @@ export class Dispatcher {
   dispatch() {
     switch (this.element.nodeName) {
       case 'BODY':
-        return new FragmentNode(this.element, this.children).deserialize();
+        return new FragmentNode(this.children);
       case 'P':
-        return new ElementNode(this.element, 'paragraph', this.children).deserialize();
+        return new ElementNode('paragraph', this.children);
       case 'STRONG':
-        return new TextNode(this.element, 'bold', this.children).deserialize();
+        return new TextNode(this.element.textContent, 'bold', this.children);
       case 'BR':
-        return "\n";
+        return new BaseNode("\n");
       default:
-        return new BaseNode(this.element).deserialize();
+        return new BaseNode(this.element.textContent);
     }
   }
 }

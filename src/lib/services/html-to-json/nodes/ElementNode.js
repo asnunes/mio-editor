@@ -1,9 +1,7 @@
 import { jsx } from 'slate-hyperscript';
-import { BaseNode } from './BaseNode';
 
-export class ElementNode extends BaseNode {
-  constructor(element, type, children) {
-    super(element);
+export class ElementNode {
+  constructor(type, children) {
     this.type = type;
     this.children = children;
   }

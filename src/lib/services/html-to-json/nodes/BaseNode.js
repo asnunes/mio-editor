@@ -1,6 +1,6 @@
 export class BaseNode {
-  constructor(element) {
-    this.textContent = element.textContent;
+  constructor(textContent) {
+    this.textContent = textContent;
   }
 
   deserialize() {
