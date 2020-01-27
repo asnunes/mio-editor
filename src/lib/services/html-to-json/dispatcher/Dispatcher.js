@@ -18,6 +18,12 @@ export class Dispatcher {
       case "I":
       case 'EM':
         return new TextNode(this.element.textContent, 'italic', this.children);
+      case 'U':
+        return new TextNode(this.element.textContent, 'underline', this.children);
+      case 'SPAN':
+        if (this.element.style['text-decoration'] === 'underline')
+          return new TextNode(this.element.textContent, 'underline', this.children);
+        return new BaseNode(this.element.textContent);
       case 'BR':
         return new BaseNode("\n");
       default:

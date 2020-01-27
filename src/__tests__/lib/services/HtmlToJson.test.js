@@ -1,7 +1,7 @@
 const { HtmlToJson } = require('../../../lib/services/html-to-json/htmlToJson');
 
 describe('#HtmlToJson', () => {
-  describe('pass an html string containing a p tag', () => {
+  describe('pass a html string containing a p tag', () => {
     test('returns an paragraph element', () => {
       const input = `<p>This is a text in a paragraph.</p>`;
 
@@ -23,7 +23,7 @@ describe('#HtmlToJson', () => {
     });
   });
   
-  describe('pass an html string containing a p tag with br tag', () => {
+  describe('pass a html string containing a p tag with br tag', () => {
     test('returns an paragraph element with line break', () => {
       const input = `<p>This is a text in a paragraph.</br>And this is a new line</p>`;
 
@@ -45,7 +45,7 @@ describe('#HtmlToJson', () => {
     });
   });
 
-  describe('pass an html string containing a p tag with strong tag in the middle', () => {
+  describe('pass a html string containing a p tag with strong tag in the middle', () => {
     test('returns one paragraphs element with bold mark equals true in the middle child', () => {
       const input = `<p>This is a <strong>text</strong> in a paragraph</p>`;
 
@@ -70,8 +70,8 @@ describe('#HtmlToJson', () => {
     });
   });
 
-  describe('pass an html string containing a p tag with em tag in the end', () => {
-    test('returns two paragraphs elements with italic mark equals true in last child', () => {
+  describe('pass a html string containing a p tag with em tag in the end', () => {
+    test('returns one paragraph elementswith italic mark equals true in last child', () => {
       const input = `<p>This is <em>italic</b></em>`;
 
       const result = HtmlToJson(input);
@@ -94,8 +94,8 @@ describe('#HtmlToJson', () => {
     });
   });
 
-  describe('pass an html string containing a p tag with i tag in the end', () => {
-    test('returns two paragraphs elements with italic mark equals true in last child', () => {
+  describe('pass a html string containing a p tag with i tag in the end', () => {
+    test('returns one paragraph elementswith italic mark equals true in last child', () => {
       const input = `<p>This is a <i>pudim</i></em>`;
 
       const result = HtmlToJson(input);
@@ -109,6 +109,55 @@ describe('#HtmlToJson', () => {
               text:"pudim",
               italic: true,
             },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing a p tag with span tag inside and style with 'text-decoration: underline'\
+  tag in the beggining", () => {
+    test('returns one paragraph elementswith underline mark equals true in first child', () => {
+      const input = `<p><span style="text-decoration: underline;">This is</span> a text</p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is",
+              underline: true,
+            },
+            { text: " a text" },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing a p tag with u tag inside", () => {
+    test('returns one paragraph elementswith underline mark equals true in first child', () => {
+      const input = `<p><u>This is</u> a text</p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is",
+              underline: true,
+            },
+            { text: " a text" },
           ]
         },
       ];
