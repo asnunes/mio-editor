@@ -15,6 +15,7 @@ export class Dispatcher {
       case 'B':
       case 'STRONG':
         return new TextNode(this.element.textContent, 'bold', this.children);
+      case "I":
       case 'EM':
         return new TextNode(this.element.textContent, 'italic', this.children);
       case 'BR':

@@ -93,4 +93,28 @@ describe('#HtmlToJson', () => {
       expect(result).toEqual(expected);
     });
   });
+
+  describe('pass an html string containing a p tag with i tag in the end', () => {
+    test('returns two paragraphs elements with italic mark equals true in last child', () => {
+      const input = `<p>This is a <i>pudim</i></em>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            { text:"This is a " },
+            {
+              text:"pudim",
+              italic: true,
+            },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
 });
