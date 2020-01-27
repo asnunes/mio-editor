@@ -45,8 +45,8 @@ describe('#HtmlToJson', () => {
     });
   });
 
-  describe('pass an html string containing a p tag with strong tag', () => {
-    test('returns three paragraphs element with bold mark equals true in the middle one', () => {
+  describe('pass an html string containing a p tag with strong tag in the middle', () => {
+    test('returns one paragraphs element with bold mark equals true in the middle child', () => {
       const input = `<p>This is a <strong>text</strong> in a paragraph</p>`;
 
       const result = HtmlToJson(input);
@@ -70,9 +70,9 @@ describe('#HtmlToJson', () => {
     });
   });
 
-  describe('pass an html string containing a p tag with b tag', () => {
-    test('returns three paragraphs element with bold mark equals true in the middle one', () => {
-      const input = `<p>This is a <b>text</b> in a paragraph</p>`;
+  describe('pass an html string containing a p tag with em tag in the end', () => {
+    test('returns two paragraphs elements with italic mark equals true in last child', () => {
+      const input = `<p>This is <em>italic</b></em>`;
 
       const result = HtmlToJson(input);
 
@@ -80,12 +80,11 @@ describe('#HtmlToJson', () => {
         {
           type: "paragraph",
           children:[
-            { text:"This is a " },
+            { text:"This is " },
             {
-              text:"text",
-              bold: true,
+              text:"italic",
+              italic: true,
             },
-            { text:" in a paragraph" },
           ]
         },
       ];
