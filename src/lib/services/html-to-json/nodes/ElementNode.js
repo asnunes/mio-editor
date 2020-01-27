@@ -1,4 +1,4 @@
-import { jsx } from 'slate-hyperscript';
+import { JsxInterface } from '../interface';
 
 export class ElementNode {
   constructor(type, children) {
@@ -7,6 +7,6 @@ export class ElementNode {
   }
 
   deserialize() {
-    return jsx('element', { type: this.type }, this.children);
+    return new JsxInterface('element', { type: this.type }, this.children).toJSON();
   }
 }

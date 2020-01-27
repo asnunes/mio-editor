@@ -1,4 +1,4 @@
-import { jsx } from 'slate-hyperscript';
+import { JsxInterface } from '../interface';
 
 export class TextNode {
   constructor(textContent, attr, children) {
@@ -8,6 +8,6 @@ export class TextNode {
   }
 
   deserialize() {
-    return jsx('text', { [this.attr]: true }, this.textContent);
+    return new JsxInterface('text', { [this.attr]: true }, this.textContent).toJSON();
   }
 }

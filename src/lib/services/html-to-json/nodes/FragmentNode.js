@@ -1,4 +1,4 @@
-import { jsx } from 'slate-hyperscript';
+import { JsxInterface } from '../interface';
 
 export class FragmentNode {
   constructor(children) {
@@ -6,6 +6,6 @@ export class FragmentNode {
   }
 
   deserialize() {
-    return jsx('fragment', {}, this.children);
+    return new JsxInterface('fragment', {}, this.children).toJSON();
   }
 }
