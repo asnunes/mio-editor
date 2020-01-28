@@ -1,18 +1,23 @@
 import { JsxInterface } from '../interface';
 
 export class TextNode {
-  constructor(textContent, attr, children) {
+  constructor(textContent, attrs, children) {
     this.textContent = textContent;
-    this.attr = attr;
+    this.attrs = Array.isArray(attrs) ? attrs : attrs.split();
     this.children = children;
-    console.log(children, textContent);
   }
 
   deserialize() {
     if (this._isOnlyChildATextNode())
-      return Object.assign({ [this.attr]: true }, this.children[0].deserialize());
+      return Object.assign(this._marksObject(), this.children[0].deserialize());
 
-    return new JsxInterface('text', { [this.attr]: true }, this.textContent).toJSON();
+    return new JsxInterface('text', this._marksObject(), this.textContent).toJSON();
+  }
+
+  _marksObject() {
+    return this.attrs.reduce((acc, attr) => {
+      return Object.assign({ [attr]: true }, acc);
+    }, {});
   }
 
   _isOnlyChildATextNode(){

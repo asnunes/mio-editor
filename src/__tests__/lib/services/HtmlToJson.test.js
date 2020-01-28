@@ -262,7 +262,7 @@ describe('#HtmlToJson', () => {
 
   describe("pass a html string containing a span tag inside and style with 'text-decoration: line-through'", () => {
     test('returns one paragraph element with strike mark', () => {
-      const input = `<p><span style="text-decoration: line-through;">This is strike</span></p>`;
+      const input = `<p><span style="text-decoration: underline line-through;">This is strike</span></p>`;
 
       const result = HtmlToJson(input);
 
@@ -273,6 +273,7 @@ describe('#HtmlToJson', () => {
             {
               text: "This is strike",
               strikethrough: true,
+              underline: true,
             },
           ]
         },
