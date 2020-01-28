@@ -18,6 +18,7 @@ export class Dispatcher {
       case "I":
       case 'EM':
         return new TextNode(this.element.textContent, 'italic', this.children);
+      case 'S':
       case 'STRIKE':
         return new TextNode(this.element.textContent, 'strikethrough', this.children);
       case 'U':

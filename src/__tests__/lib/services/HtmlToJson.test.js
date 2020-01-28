@@ -189,4 +189,27 @@ describe('#HtmlToJson', () => {
       expect(result).toEqual(expected);
     });
   });
+
+  describe("pass a html string containing a s tag inside", () => {
+    test('returns one paragraph element with strike mark', () => {
+      const input = `<p><s>This is strike</s>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is strike",
+              strikethrough: true,
+            },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
 });
