@@ -26,6 +26,8 @@ export class Dispatcher {
       case 'SPAN':
         if (this.element.style['text-decoration'] === 'underline')
           return new TextNode(this.element.textContent, 'underline', this.children);
+        if (this.element.style['text-decoration'] === 'strikethrough')
+          return new TextNode(this.element.textContent, 'strikethrough', this.children);
         return new BaseNode(this.element.textContent);
       case 'BR':
         return new BaseNode("\n");
