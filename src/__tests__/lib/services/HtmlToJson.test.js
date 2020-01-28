@@ -169,7 +169,7 @@ describe('#HtmlToJson', () => {
 
   describe("pass a html string containing a strike tag inside", () => {
     test('returns one paragraph element with strike mark', () => {
-      const input = `<p><strike>This is strike</strike>`;
+      const input = `<p><strike>This is strike</strike></p>`;
 
       const result = HtmlToJson(input);
 
@@ -192,7 +192,7 @@ describe('#HtmlToJson', () => {
 
   describe("pass a html string containing a s tag inside", () => {
     test('returns one paragraph element with strike mark', () => {
-      const input = `<p><s>This is strike</s>`;
+      const input = `<p><s>This is strike</s></p>`;
 
       const result = HtmlToJson(input);
 
@@ -215,7 +215,7 @@ describe('#HtmlToJson', () => {
 
   describe("pass a html string containing a span tag inside and style with 'text-decoration: strikethrough'", () => {
     test('returns one paragraph element with strike mark', () => {
-      const input = `<p><span style="text-decoration: strikethrough;">This is strike</span>`;
+      const input = `<p><span style="text-decoration: strikethrough;">This is strike</span></p>`;
 
       const result = HtmlToJson(input);
 
@@ -226,6 +226,30 @@ describe('#HtmlToJson', () => {
             {
               text: "This is strike",
               strikethrough: true,
+            },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing nested s and u tags inside'", () => {
+    test('returns one paragraph element with strikethrough and underline and mark', () => {
+      const input = `<p><s><u>This is strike</u></s><p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is strike",
+              strikethrough: true,
+              underline: true,
             },
           ]
         },

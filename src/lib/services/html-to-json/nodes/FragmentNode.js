@@ -6,6 +6,10 @@ export class FragmentNode {
   }
 
   deserialize() {
-    return new JsxInterface('fragment', {}, this.children).toJSON();
+    return new JsxInterface('fragment', {}, this._deserializedChildren()).toJSON();
+  }
+
+  _deserializedChildren(){
+    return this.children.map(child => child.deserialize());
   }
 }
