@@ -213,9 +213,9 @@ describe('#HtmlToJson', () => {
     });
   });
 
-  describe("pass a html string containing a span tag inside and style with 'text-decoration: strikethrough'", () => {
+  describe("pass a html string containing a span tag inside and style with 'text-decoration: line-through'", () => {
     test('returns one paragraph element with strike mark', () => {
-      const input = `<p><span style="text-decoration: strikethrough;">This is strike</span></p>`;
+      const input = `<p><span style="text-decoration: line-through;">This is strike</span></p>`;
 
       const result = HtmlToJson(input);
 
@@ -250,6 +250,29 @@ describe('#HtmlToJson', () => {
               text: "This is strike",
               strikethrough: true,
               underline: true,
+            },
+          ]
+        },
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing a span tag inside and style with 'text-decoration: line-through'", () => {
+    test('returns one paragraph element with strike mark', () => {
+      const input = `<p><span style="text-decoration: line-through;">This is strike</span></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is strike",
+              strikethrough: true,
             },
           ]
         },
