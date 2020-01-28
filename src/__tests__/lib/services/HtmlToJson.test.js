@@ -238,7 +238,7 @@ describe('#HtmlToJson', () => {
 
   describe("pass a html string containing nested s and u tags inside'", () => {
     test('returns one paragraph element with strikethrough and underline and mark', () => {
-      const input = `<p><s><u>This is strike</u></s><p>`;
+      const input = `<p><s><u>This is strike</u></s></p>`;
 
       const result = HtmlToJson(input);
 
