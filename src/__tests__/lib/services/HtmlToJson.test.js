@@ -18,7 +18,6 @@ describe('#HtmlToJson', () => {
        },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -40,7 +39,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -65,7 +63,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -89,7 +86,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -113,7 +109,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -138,7 +133,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -162,7 +156,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -185,7 +178,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -208,7 +200,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -231,7 +222,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -255,7 +245,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
@@ -279,7 +268,6 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
       expect(result).toEqual(expected);
     });
   });
