@@ -25,9 +25,9 @@ export class Dispatcher {
       case 'U':
         return new TextNode(this.element.textContent, 'underline', children);
       case 'SPAN':
-        const marks = this._marks();
+        const leaves = this._leaves();
 
-        if (marks.length > 0) return new TextNode(this.element.textContent, marks, children);
+        if (leaves.length > 0) return new TextNode(this.element.textContent, leaves, children);
         return new BaseNode(this.element.textContent);
       case 'BR':
         return new BaseNode("\n");
@@ -36,16 +36,16 @@ export class Dispatcher {
     }
   }
 
-  _marks() {
+  _leaves() {
     const textDecoration = this.element.style['text-decoration'];
-    return MARKS_TO_DECORATION
+    return LEAVES_TO_DECORATION
       .filter(relation => textDecoration.match(relation['decoration']))
       .map(relation => relation['mark'])
       ;
   }
 }
 
-const MARKS_TO_DECORATION = [
+const LEAVES_TO_DECORATION = [
   { mark: 'underline', decoration: 'underline' },
-  { mark: 'strikethrough', decoration: 'line-through' }
+  { mark: 'strikethrough', decoration: 'line-through' },
 ]
