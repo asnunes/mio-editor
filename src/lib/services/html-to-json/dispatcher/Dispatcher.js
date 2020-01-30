@@ -24,6 +24,8 @@ export class Dispatcher {
         return new TextNode(this.element.textContent, 'strikethrough', children);
       case 'U':
         return new TextNode(this.element.textContent, 'underline', children);
+      case 'CODE':
+        return new TextNode(this.element.textContent, 'code', children);
       case 'SPAN':
         const leaves = this._leaves();
 

@@ -290,7 +290,31 @@ describe('#HtmlToJson', () => {
         },
       ];
 
-      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing a code tag", () => {
+    test('returns one paragraph element with code leaf', () => {
+      const input = `<p>This is: <code>var isCode=true</code></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is: "
+            },
+            {
+              text: "var isCode=true",
+              code: true,
+            },
+          ]
+        },
+      ];
+
       expect(result).toEqual(expected);
     });
   });
