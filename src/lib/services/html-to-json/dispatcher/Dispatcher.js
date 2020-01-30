@@ -40,12 +40,13 @@ export class Dispatcher {
     const textDecoration = this.element.style['text-decoration'];
     return LEAVES_TO_DECORATION
       .filter(relation => textDecoration.match(relation['decoration']))
-      .map(relation => relation['mark'])
+      .map(relation => relation['leaf'])
       ;
   }
 }
 
 const LEAVES_TO_DECORATION = [
-  { mark: 'underline', decoration: 'underline' },
-  { mark: 'strikethrough', decoration: 'line-through' },
+  { leaf: 'underline', decoration: 'underline' },
+  { leaf: 'strikethrough', decoration: 'line-through' },
+  { leaf: 'code', decoration: 'monospace' },
 ]
