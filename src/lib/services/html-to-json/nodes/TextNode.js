@@ -21,6 +21,6 @@ export class TextNode {
   }
 
   _isOnlyChildATextNode(){
-    return this.children.length === 1 && this.children[0].constructor.name === 'TextNode';
+    return this.children.length === 1 && this.children[0].constructor.name === 'LeafTag';
   }
 }

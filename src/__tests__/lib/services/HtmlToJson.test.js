@@ -318,4 +318,25 @@ describe('#HtmlToJson', () => {
       expect(result).toEqual(expected);
     });
   });
+
+  describe("pass a html string containing a pre tag with code tag inside", () => {
+    test('returns one code element', () => {
+      const input = `<pre><code>var isCode=true"<code></pre>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "code",
+          children:[
+            {
+              text: "var isCode=true",
+            },
+          ]
+        },
+      ];
+
+      expect(result).toEqual(expected);
+    });
+  });
 });
