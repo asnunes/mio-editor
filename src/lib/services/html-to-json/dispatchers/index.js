@@ -4,6 +4,7 @@ export { CodeDispatcher } from './CodeDispatcher';
 export { FragmentDispatcher } from './FragmentDispatcher';
 export { GenericDispatcher } from './GenericDispatcher';
 export { HeaderDispatcher } from './HeaderDispatcher';
+export { InlineMathDispatcher } from './InlineMathDispatcher';
 export { LeavesDispatcher } from './LeavesDispatcher';
 export { MathDispatcher } from './MathDispatcher';
 export { ParagraphDispatcher } from './ParagraphDispatcher';

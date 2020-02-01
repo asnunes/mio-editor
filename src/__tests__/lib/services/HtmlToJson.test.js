@@ -416,4 +416,42 @@ describe('#HtmlToJson', () => {
     });
   });
 
+  describe("pass a html string containing math tag inside paragraph", () => {
+    test('returns one math element', () => {
+      const input = `<p><math><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></math></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "math",
+          children:[{ "text": "2 + 2"}],
+        },
+      ];
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing text and math tag inside paragraph", () => {
+    test('returns paragraph element with text and math', () => {
+      const input = `<p>Opa: <math><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></math></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          "type":"paragraph",
+          "children":[
+            {"text":"Opa: "},
+            {"type":"inlineMath","content":"2 + 2","children":[{"text":""}]}
+          ]
+        }
+      ];
+
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
 });
