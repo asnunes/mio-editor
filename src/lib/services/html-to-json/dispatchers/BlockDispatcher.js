@@ -14,9 +14,9 @@ export class BlockDispatcher extends BaseDispatcher {
   _dispatchedChild(child) {
     const nodeName = child.nodeName.toLowerCase();
     
-    if (LEAFABLE_TAGS.includes(nodeName)) return new LeavesDispatcher(child, this._allowedTags()).dispatch();
+    if (nodeName === "#text") return new TextNode(child.textContent);
     if (LINE_BREAK_TAGS.includes(nodeName)) return new TextNode('\n');
-    return new TextNode(child.textContent);
+    return new LeavesDispatcher(child, this._allowedTags()).dispatch();
   }
 
   _allowedTags() {
@@ -24,5 +24,4 @@ export class BlockDispatcher extends BaseDispatcher {
   }
 }
 
-const LEAFABLE_TAGS = ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code', 'span'];
 const LINE_BREAK_TAGS = ['br'];
