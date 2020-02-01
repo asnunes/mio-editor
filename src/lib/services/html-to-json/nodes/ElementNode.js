@@ -1,13 +1,15 @@
 import { JsxInterface } from '../interface';
 
 export class ElementNode {
-  constructor(type, children) {
+  constructor(type, children, elementProps={}) {
     this.type = type;
     this.children = children;
+    this.elementProps = elementProps;
   }
 
   deserialize() {
-    return new JsxInterface('element', { type: this.type }, this._deserializedChildren()).toJSON();
+    const props = Object.assign({ type: this.type }, this.elementProps);
+    return new JsxInterface('element', props, this._deserializedChildren()).toJSON();
   }
 
   _deserializedChildren(){
