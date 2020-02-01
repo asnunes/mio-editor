@@ -399,4 +399,21 @@ describe('#HtmlToJson', () => {
     });
   });
 
+  describe("pass a html string containing math tag with math content", () => {
+    test('returns one image element', () => {
+      const input = `<math><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></math>`;
+      
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "math",
+          children:[{ "text": "2 + 2"}],
+        },
+      ];
+
+      expect(result).toEqual(expected);
+    });
+  });
+
 });

@@ -35,6 +35,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "is-hotkey": "0.1.6",
+    "mathml2asciimath": "^0.0.3",
     "re-resizable": "^6.1.1",
     "react-mathjax2": "0.0.2",
     "slate": "0.57.0",
