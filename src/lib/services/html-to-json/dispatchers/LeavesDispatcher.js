@@ -38,6 +38,7 @@ export class LeavesDispatcher extends BaseDispatcher {
 
   _leaf() {
     const nodeName = this.element.nodeName.toLowerCase();
+    if (!this._accumulatedAllowedTags().includes(nodeName)) return;
 
     switch (nodeName) {
       case 'b':

@@ -297,4 +297,46 @@ describe('#HtmlToJson', () => {
     });
   });
 
+  describe("pass a html string containing pre tag with code tag inside", () => {
+    test('returns one code element', () => {
+      const input = `<pre><code>let isWorking;</code></pre>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "code",
+          children:[
+            {
+              "text": "let isWorking;"
+            }
+          ]
+        },
+      ];
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing pre tag with code tag inside and line breaks", () => {
+    test('returns one code element', () => {
+      const input = `<pre><code>let isWorking;\nlet isWithLineBreaks;</code></pre>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "code",
+          children:[
+            {
+              "text": "let isWorking;\nlet isWithLineBreaks;"
+            }
+          ]
+        },
+      ];
+      console.log(JSON.stringify(result));
+      expect(result).toEqual(expected);
+    });
+  });
+
 });

@@ -2,9 +2,9 @@ import { BaseDispatcher, LeavesDispatcher } from ".";
 import { ElementNode, TextNode } from "../nodes";
 
 export class BlockDispatcher extends BaseDispatcher {
-  constructor(type, element) {
+  constructor(element) {
     super(element);
-    this.type = type;
+    this.type = 'paragraph';
   }
 
   dispatch() {
@@ -20,7 +20,7 @@ export class BlockDispatcher extends BaseDispatcher {
   }
 
   _allowedTags() {
-    return ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code', 'span'];
+    throw new Error(`Subclass method called at superclass: ${this.constructor.name}`);
   }
 }
 

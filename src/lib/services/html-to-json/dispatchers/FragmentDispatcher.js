@@ -1,4 +1,4 @@
-import { BaseDispatcher, BlockDispatcher } from '.';
+import { CodeDispatcher, ParagraphDispatcher, BaseDispatcher } from '.';
 import { FragmentNode, TextNode } from "../nodes";
 
 export class FragmentDispatcher extends BaseDispatcher {
@@ -13,13 +13,13 @@ export class FragmentDispatcher extends BaseDispatcher {
   _dispatchedChild(child) {
     const nodeName = child.nodeName.toLowerCase();
     
-    if (PARAGRAPH_TAGS.includes(nodeName)) return new BlockDispatcher('paragraph', child).dispatch();
+    if (PARAGRAPH_TAGS.includes(nodeName)) return new ParagraphDispatcher(child).dispatch();
+    if (CODE_TAGS.includes(nodeName)) return new CodeDispatcher(child).dispatch();
     if (LINE_BREAK_TAGS.includes(nodeName)) return new TextNode('\n');
     return new TextNode(child.textContent);
   }
 }
 
-const FRAGMENT_TAGS = ['body'];
 const PARAGRAPH_TAGS = ['p', 'div'];
-const LEAVES_TAGS = ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code', 'span'];
+const CODE_TAGS = ['code', 'pre']
 const LINE_BREAK_TAGS = ['br'];
