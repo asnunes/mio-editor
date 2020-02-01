@@ -15,25 +15,25 @@ export class LeavesDispatcher extends BaseDispatcher {
   _dispatchedChild(child) {
     const nodeName = child.nodeName.toLowerCase();
 
-    if (this._accumulatedAllowedLeaves().includes(nodeName))
-      return new LeavesDispatcher(child, this._accumulatedAllowedLeaves(), this._accumulatedLeaves()).dispatch();
+    if (this._accumulatedAllowedTags().includes(nodeName))
+      return new LeavesDispatcher(child, this._accumulatedAllowedTags(), this._accumulatedLeaves()).dispatch();
     
     if (LINE_BREAK_TAGS.includes(nodeName)) return new TextNode('\n');
-    return new TextNode(this.element.textContent, this._accumulatedLeaves());
+    return new TextNode(child.textContent, this._accumulatedLeaves());
   }
 
   _accumulatedLeaves() {
-    return this.parentsLeaves.concat(this._leaf());
+    return this._leaf() ? this.parentsLeaves.concat(this._leaf()) : this.parentsLeaves;
   }
 
-  _accumulatedAllowedLeaves() {
-    return this._allowedLeavesTags().filter(leafTag => {
+  _accumulatedAllowedTags() {
+    return this._allowedTags().filter(leafTag => {
       return this.allowedParentsLeaves.indexOf(leafTag) !== -1;
     });
   }
 
-  _allowedLeavesTags() {
-    return ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code'];
+  _allowedTags() {
+    return ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code', 'span'];
   }
 
   _leaf() {
@@ -53,8 +53,6 @@ export class LeavesDispatcher extends BaseDispatcher {
         return 'strikethrough';
       case 'code':
         return 'code';
-      default: 
-        throw new Error(`Leaf not found: ${nodeName}`);
     }
   }
 }

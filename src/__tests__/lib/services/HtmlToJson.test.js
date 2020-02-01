@@ -227,29 +227,74 @@ describe('#HtmlToJson', () => {
     });
   });
   
-    describe("pass a html string containing a code tag", () => {
-      test('returns one paragraph element with code leaf', () => {
-        const input = `<p>This is: <code>var isCode=true</code></p>`;
-  
-        const result = HtmlToJson(input);
-  
-        const expected = [
-          {
-            type: "paragraph",
-            children:[
-              {
-                text: "This is: "
-              },
-              {
-                text: "var isCode=true",
-                code: true,
-              },
-            ]
-          },
-        ];
-  
-        expect(result).toEqual(expected);
-      });
+  describe("pass a html string containing a code tag", () => {
+    test('returns one paragraph element with code leaf', () => {
+      const input = `<p>This is: <code>var isCode=true</code></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is: "
+            },
+            {
+              text: "var isCode=true",
+              code: true,
+            },
+          ]
+        },
+      ];
+
+      expect(result).toEqual(expected);
     });
+  });
+  
+  describe("pass a html string containing a span tag inside", () => {
+    test('returns one paragraph element ignoring span tag', () => {
+      const input = `<p>This is a <span>text</span></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is a text"
+            },
+          ]
+        },
+      ];
+
+      expect(result).toEqual(expected);
+    });
+  });
+  
+  describe("pass a html string containing a span tag followed by b tag inside", () => {
+    test('returns one paragraph element with bold flag for b tag content ignoring span tag', () => {
+      const input = `<p>This is <span>a <b>text</b></span></p>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "paragraph",
+          children:[
+            {
+              text: "This is a "
+            },
+            {
+              text: "text",
+              bold: true,
+            }
+          ]
+        },
+      ];
+      expect(result).toEqual(expected);
+    });
+  });
 
 });

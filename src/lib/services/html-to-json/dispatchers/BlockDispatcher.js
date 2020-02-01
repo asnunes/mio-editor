@@ -14,15 +14,15 @@ export class BlockDispatcher extends BaseDispatcher {
   _dispatchedChild(child) {
     const nodeName = child.nodeName.toLowerCase();
     
-    if (LEAVES_TAGS.includes(nodeName)) return new LeavesDispatcher(child, this._allowedLeavesTags()).dispatch();
+    if (LEAFABLE_TAGS.includes(nodeName)) return new LeavesDispatcher(child, this._allowedTags()).dispatch();
     if (LINE_BREAK_TAGS.includes(nodeName)) return new TextNode('\n');
     return new TextNode(child.textContent);
   }
 
-  _allowedLeavesTags() {
-    return ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code'];
+  _allowedTags() {
+    return ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code', 'span'];
   }
 }
 
-const LEAVES_TAGS = ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code'];
+const LEAFABLE_TAGS = ['b', 'strong', 'i', 'em', 's', 'strike', 'u', 'code', 'span'];
 const LINE_BREAK_TAGS = ['br'];
