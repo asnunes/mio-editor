@@ -1,4 +1,4 @@
-import { Dispatcher } from './dispatcher/Dispatcher';
+import { GenericDispatcher } from './dispatchers';
 
 export const HtmlToJson = html => {
   const document = new DOMParser().parseFromString(html, 'text/html');
@@ -10,7 +10,7 @@ const deserialize = element => {
   if (isTextNode(element)) return element.textContent;
   else if (isNotElementNode(element)) return null;
 
-  const nodeDeserializer = new Dispatcher(element).dispatch();
+  const nodeDeserializer = new GenericDispatcher(element).dispatch();
   return nodeDeserializer.deserialize();
 };
 
