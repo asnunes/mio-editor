@@ -5,3 +5,4 @@ export { FragmentDispatcher } from './FragmentDispatcher';
 export { GenericDispatcher } from './GenericDispatcher';
 export { LeavesDispatcher } from './LeavesDispatcher';
 export { ParagraphDispatcher } from './ParagraphDispatcher';
+export { HeaderDispatcher } from './HeaderDispatcher';

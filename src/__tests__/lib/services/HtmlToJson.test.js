@@ -313,7 +313,7 @@ describe('#HtmlToJson', () => {
           ]
         },
       ];
-      console.log(JSON.stringify(result));
+
       expect(result).toEqual(expected);
     });
   });
@@ -334,7 +334,49 @@ describe('#HtmlToJson', () => {
           ]
         },
       ];
-      console.log(JSON.stringify(result));
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing h# tag", () => {
+    test('returns one header element', () => {
+      const input = `<h1>This is a title</h1>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "header",
+          children:[
+            {
+              "text": "This is a title"
+            }
+          ]
+        },
+      ];
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe("pass a html string containing h# tag with a span tag inside it", () => {
+    test('returns one header element ignoring span tag but getting its content', () => {
+      const input = `<h1>This is <span>a title</span></h1>`;
+
+      const result = HtmlToJson(input);
+
+      const expected = [
+        {
+          type: "header",
+          children:[
+            {
+              "text": "This is a title"
+            }
+          ]
+        },
+      ];
+
       expect(result).toEqual(expected);
     });
   });
