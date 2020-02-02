@@ -3,10 +3,6 @@ import { FragmentNode, TextNode } from "../nodes";
 import { ImageDispatcher } from './ImageDispatcher';
 
 export class FragmentDispatcher extends BaseDispatcher {
-  constructor(element) {
-    super(element);
-  }
-
   dispatch() {
     return new FragmentNode(this._dispatchedChildren())
   }

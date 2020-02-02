@@ -1,3 +1,5 @@
+import { TextNode } from "../nodes";
+
 export class BaseDispatcher {
   constructor(element) {
     this.element = element;
@@ -5,6 +7,7 @@ export class BaseDispatcher {
 
   _dispatchedChildren() {
     const children = Array.from(this.element.childNodes);
+    if (children.length === 0) return [ new TextNode("") ];
 
     return children.map(child => this._dispatchedChild(child));
   }

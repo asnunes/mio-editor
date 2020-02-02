@@ -10,7 +10,7 @@ export class GenericDispatcher {
     const nodeName = this.element.nodeName.toLowerCase();
     
     if (FRAGMENT_TAGS.includes(nodeName)) return new FragmentDispatcher(this.element).dispatch();
-    return new TextNode(this.element.textContent);
+    return new TextNode(this.element.textContent || '');
   }
 }
 

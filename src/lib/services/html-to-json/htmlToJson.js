@@ -1,6 +1,7 @@
 import { GenericDispatcher } from './dispatchers';
 
-export const HtmlToJson = html => {
+export function htmlToJson(rawHtml) {
+  const html = _removeLineBreaks(rawHtml);
   const document = new DOMParser().parseFromString(html, 'text/html');
 
   return deserialize(document.body);
@@ -16,3 +17,4 @@ const deserialize = element => {
 
 const isTextNode = element => element.nodeType === 3;
 const isNotElementNode = element => element.nodeType !== 1;
+const _removeLineBreaks = str => str.replace(/\n|\r\n|\r/g, '');

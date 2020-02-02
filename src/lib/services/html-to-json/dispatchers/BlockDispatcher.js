@@ -10,12 +10,13 @@ export class BlockDispatcher extends BaseDispatcher {
   dispatch() {
     if (this._isOnlyChildAElementOf(MATH_TAGS)) return new MathDispatcher(this.element).dispatch();
     if (this._isOnlyChildAElementOf(IMG_TAGS)) return new ImageDispatcher(this.element.childNodes[0]).dispatch();
+
     return new ElementNode(this.type, this._dispatchedChildren().flat(Infinity));
   }
 
   _dispatchedChild(child) {
     const nodeName = child.nodeName.toLowerCase();
-    
+
     if (nodeName === "#text") return new TextNode(child.textContent);
     if (MATH_TAGS.includes(nodeName)) return new InlineMathDispatcher(child).dispatch();
     if (LINE_BREAK_TAGS.includes(nodeName)) return new TextNode('\n');

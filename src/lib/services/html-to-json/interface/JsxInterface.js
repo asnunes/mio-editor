@@ -4,7 +4,7 @@ export class JsxInterface {
   constructor(type, payload = {}, children = []) {
     this.type = type;
     this.payload = payload;
-    this.children = children
+    this.children = children;
   }
 
   toJSON() {

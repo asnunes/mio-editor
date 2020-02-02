@@ -1,1 +1,3 @@
-export { htmlToJSon } from './htmlToJson';
+import { htmlToJson } from './htmlToJson';
+
+export { htmlToJson };
